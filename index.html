@@ -1,0 +1,1433 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow"><style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>Fatehgarh Sahib Booth Atlas</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Noto+Sans+Gurmukhi:wght@400;500;600&display=swap">
+<style>
+
+.leaflet-pane,
+.leaflet-tile,
+.leaflet-marker-icon,
+.leaflet-marker-shadow,
+.leaflet-tile-container,
+.leaflet-pane > svg,
+.leaflet-pane > canvas,
+.leaflet-zoom-box,
+.leaflet-image-layer,
+.leaflet-layer {
+position: absolute;
+left: 0;
+top: 0;
+}
+.leaflet-container {
+overflow: hidden;
+}
+.leaflet-tile,
+.leaflet-marker-icon,
+.leaflet-marker-shadow {
+-webkit-user-select: none;
+-moz-user-select: none;
+user-select: none;
+-webkit-user-drag: none;
+}
+.leaflet-tile::selection {
+background: transparent;
+}
+.leaflet-safari .leaflet-tile {
+image-rendering: -webkit-optimize-contrast;
+}
+.leaflet-safari .leaflet-tile-container {
+width: 1600px;
+height: 1600px;
+-webkit-transform-origin: 0 0;
+}
+.leaflet-marker-icon,
+.leaflet-marker-shadow {
+display: block;
+}
+.leaflet-container .leaflet-overlay-pane svg {
+max-width: none !important;
+max-height: none !important;
+}
+.leaflet-container .leaflet-marker-pane img,
+.leaflet-container .leaflet-shadow-pane img,
+.leaflet-container .leaflet-tile-pane img,
+.leaflet-container img.leaflet-image-layer,
+.leaflet-container .leaflet-tile {
+max-width: none !important;
+max-height: none !important;
+width: auto;
+padding: 0;
+}
+.leaflet-container img.leaflet-tile {
+mix-blend-mode: plus-lighter;
+}
+.leaflet-container.leaflet-touch-zoom {
+-ms-touch-action: pan-x pan-y;
+touch-action: pan-x pan-y;
+}
+.leaflet-container.leaflet-touch-drag {
+-ms-touch-action: pinch-zoom;
+touch-action: none;
+touch-action: pinch-zoom;
+}
+.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom {
+-ms-touch-action: none;
+touch-action: none;
+}
+.leaflet-container {
+-webkit-tap-highlight-color: transparent;
+}
+.leaflet-container a {
+-webkit-tap-highlight-color: rgba(51, 181, 229, 0.4);
+}
+.leaflet-tile {
+filter: inherit;
+visibility: hidden;
+}
+.leaflet-tile-loaded {
+visibility: inherit;
+}
+.leaflet-zoom-box {
+width: 0;
+height: 0;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+z-index: 800;
+}
+.leaflet-overlay-pane svg {
+-moz-user-select: none;
+}
+.leaflet-pane         { z-index: 400; }
+.leaflet-tile-pane    { z-index: 200; }
+.leaflet-overlay-pane { z-index: 400; }
+.leaflet-shadow-pane  { z-index: 500; }
+.leaflet-marker-pane  { z-index: 600; }
+.leaflet-tooltip-pane   { z-index: 650; }
+.leaflet-popup-pane   { z-index: 700; }
+.leaflet-map-pane canvas { z-index: 100; }
+.leaflet-map-pane svg    { z-index: 200; }
+.leaflet-vml-shape {
+width: 1px;
+height: 1px;
+}
+.lvml {
+behavior: url(#default#VML);
+display: inline-block;
+position: absolute;
+}
+.leaflet-control {
+position: relative;
+z-index: 800;
+pointer-events: visiblePainted;
+pointer-events: auto;
+}
+.leaflet-top,
+.leaflet-bottom {
+position: absolute;
+z-index: 1000;
+pointer-events: none;
+}
+.leaflet-top {
+top: 0;
+}
+.leaflet-right {
+right: 0;
+}
+.leaflet-bottom {
+bottom: 0;
+}
+.leaflet-left {
+left: 0;
+}
+.leaflet-control {
+float: left;
+clear: both;
+}
+.leaflet-right .leaflet-control {
+float: right;
+}
+.leaflet-top .leaflet-control {
+margin-top: 10px;
+}
+.leaflet-bottom .leaflet-control {
+margin-bottom: 10px;
+}
+.leaflet-left .leaflet-control {
+margin-left: 10px;
+}
+.leaflet-right .leaflet-control {
+margin-right: 10px;
+}
+.leaflet-fade-anim .leaflet-popup {
+opacity: 0;
+-webkit-transition: opacity 0.2s linear;
+-moz-transition: opacity 0.2s linear;
+transition: opacity 0.2s linear;
+}
+.leaflet-fade-anim .leaflet-map-pane .leaflet-popup {
+opacity: 1;
+}
+.leaflet-zoom-animated {
+-webkit-transform-origin: 0 0;
+-ms-transform-origin: 0 0;
+transform-origin: 0 0;
+}
+svg.leaflet-zoom-animated {
+will-change: transform;
+}
+.leaflet-zoom-anim .leaflet-zoom-animated {
+-webkit-transition: -webkit-transform 0.25s cubic-bezier(0,0,0.25,1);
+-moz-transition:    -moz-transform 0.25s cubic-bezier(0,0,0.25,1);
+transition:         transform 0.25s cubic-bezier(0,0,0.25,1);
+}
+.leaflet-zoom-anim .leaflet-tile,
+.leaflet-pan-anim .leaflet-tile {
+-webkit-transition: none;
+-moz-transition: none;
+transition: none;
+}
+.leaflet-zoom-anim .leaflet-zoom-hide {
+visibility: hidden;
+}
+.leaflet-interactive {
+cursor: pointer;
+}
+.leaflet-grab {
+cursor: -webkit-grab;
+cursor:    -moz-grab;
+cursor:         grab;
+}
+.leaflet-crosshair,
+.leaflet-crosshair .leaflet-interactive {
+cursor: crosshair;
+}
+.leaflet-popup-pane,
+.leaflet-control {
+cursor: auto;
+}
+.leaflet-dragging .leaflet-grab,
+.leaflet-dragging .leaflet-grab .leaflet-interactive,
+.leaflet-dragging .leaflet-marker-draggable {
+cursor: move;
+cursor: -webkit-grabbing;
+cursor:    -moz-grabbing;
+cursor:         grabbing;
+}
+.leaflet-marker-icon,
+.leaflet-marker-shadow,
+.leaflet-image-layer,
+.leaflet-pane > svg path,
+.leaflet-tile-container {
+pointer-events: none;
+}
+.leaflet-marker-icon.leaflet-interactive,
+.leaflet-image-layer.leaflet-interactive,
+.leaflet-pane > svg path.leaflet-interactive,
+svg.leaflet-image-layer.leaflet-interactive path {
+pointer-events: visiblePainted;
+pointer-events: auto;
+}
+.leaflet-container {
+background: #ddd;
+outline-offset: 1px;
+}
+.leaflet-container a {
+color: #0078A8;
+}
+.leaflet-zoom-box {
+border: 2px dotted #38f;
+background: rgba(255,255,255,0.5);
+}
+.leaflet-container {
+font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+font-size: 12px;
+font-size: 0.75rem;
+line-height: 1.5;
+}
+.leaflet-bar {
+box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+border-radius: 4px;
+}
+.leaflet-bar a {
+background-color: #fff;
+border-bottom: 1px solid #ccc;
+width: 26px;
+height: 26px;
+line-height: 26px;
+display: block;
+text-align: center;
+text-decoration: none;
+color: black;
+}
+.leaflet-bar a,
+.leaflet-control-layers-toggle {
+background-position: 50% 50%;
+background-repeat: no-repeat;
+display: block;
+}
+.leaflet-bar a:hover,
+.leaflet-bar a:focus {
+background-color: #f4f4f4;
+}
+.leaflet-bar a:first-child {
+border-top-left-radius: 4px;
+border-top-right-radius: 4px;
+}
+.leaflet-bar a:last-child {
+border-bottom-left-radius: 4px;
+border-bottom-right-radius: 4px;
+border-bottom: none;
+}
+.leaflet-bar a.leaflet-disabled {
+cursor: default;
+background-color: #f4f4f4;
+color: #bbb;
+}
+.leaflet-touch .leaflet-bar a {
+width: 30px;
+height: 30px;
+line-height: 30px;
+}
+.leaflet-touch .leaflet-bar a:first-child {
+border-top-left-radius: 2px;
+border-top-right-radius: 2px;
+}
+.leaflet-touch .leaflet-bar a:last-child {
+border-bottom-left-radius: 2px;
+border-bottom-right-radius: 2px;
+}
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+font: bold 18px 'Lucida Console', Monaco, monospace;
+text-indent: 1px;
+}
+.leaflet-touch .leaflet-control-zoom-in, .leaflet-touch .leaflet-control-zoom-out  {
+font-size: 22px;
+}
+.leaflet-control-layers {
+box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+background: #fff;
+border-radius: 5px;
+}
+.leaflet-control-layers-toggle {
+background-image: url(images/layers.png);
+width: 36px;
+height: 36px;
+}
+.leaflet-retina .leaflet-control-layers-toggle {
+background-image: url(images/layers-2x.png);
+background-size: 26px 26px;
+}
+.leaflet-touch .leaflet-control-layers-toggle {
+width: 44px;
+height: 44px;
+}
+.leaflet-control-layers .leaflet-control-layers-list,
+.leaflet-control-layers-expanded .leaflet-control-layers-toggle {
+display: none;
+}
+.leaflet-control-layers-expanded .leaflet-control-layers-list {
+display: block;
+position: relative;
+}
+.leaflet-control-layers-expanded {
+padding: 6px 10px 6px 6px;
+color: #333;
+background: #fff;
+}
+.leaflet-control-layers-scrollbar {
+overflow-y: scroll;
+overflow-x: hidden;
+padding-right: 5px;
+}
+.leaflet-control-layers-selector {
+margin-top: 2px;
+position: relative;
+top: 1px;
+}
+.leaflet-control-layers label {
+display: block;
+font-size: 13px;
+font-size: 1.08333em;
+}
+.leaflet-control-layers-separator {
+height: 0;
+border-top: 1px solid #ddd;
+margin: 5px -10px 5px -6px;
+}
+.leaflet-default-icon-path {
+background-image: url(images/marker-icon.png);
+}
+.leaflet-container .leaflet-control-attribution {
+background: #fff;
+background: rgba(255, 255, 255, 0.8);
+margin: 0;
+}
+.leaflet-control-attribution,
+.leaflet-control-scale-line {
+padding: 0 5px;
+color: #333;
+line-height: 1.4;
+}
+.leaflet-control-attribution a {
+text-decoration: none;
+}
+.leaflet-control-attribution a:hover,
+.leaflet-control-attribution a:focus {
+text-decoration: underline;
+}
+.leaflet-attribution-flag {
+display: inline !important;
+vertical-align: baseline !important;
+width: 1em;
+height: 0.6669em;
+}
+.leaflet-left .leaflet-control-scale {
+margin-left: 5px;
+}
+.leaflet-bottom .leaflet-control-scale {
+margin-bottom: 5px;
+}
+.leaflet-control-scale-line {
+border: 2px solid #777;
+border-top: none;
+line-height: 1.1;
+padding: 2px 5px 1px;
+white-space: nowrap;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+background: rgba(255, 255, 255, 0.8);
+text-shadow: 1px 1px #fff;
+}
+.leaflet-control-scale-line:not(:first-child) {
+border-top: 2px solid #777;
+border-bottom: none;
+margin-top: -2px;
+}
+.leaflet-control-scale-line:not(:first-child):not(:last-child) {
+border-bottom: 2px solid #777;
+}
+.leaflet-touch .leaflet-control-attribution,
+.leaflet-touch .leaflet-control-layers,
+.leaflet-touch .leaflet-bar {
+box-shadow: none;
+}
+.leaflet-touch .leaflet-control-layers,
+.leaflet-touch .leaflet-bar {
+border: 2px solid rgba(0,0,0,0.2);
+background-clip: padding-box;
+}
+.leaflet-popup {
+position: absolute;
+text-align: center;
+margin-bottom: 20px;
+}
+.leaflet-popup-content-wrapper {
+padding: 1px;
+text-align: left;
+border-radius: 12px;
+}
+.leaflet-popup-content {
+margin: 13px 24px 13px 20px;
+line-height: 1.3;
+font-size: 13px;
+font-size: 1.08333em;
+min-height: 1px;
+}
+.leaflet-popup-content p {
+margin: 17px 0;
+margin: 1.3em 0;
+}
+.leaflet-popup-tip-container {
+width: 40px;
+height: 20px;
+position: absolute;
+left: 50%;
+margin-top: -1px;
+margin-left: -20px;
+overflow: hidden;
+pointer-events: none;
+}
+.leaflet-popup-tip {
+width: 17px;
+height: 17px;
+padding: 1px;
+margin: -10px auto 0;
+pointer-events: auto;
+-webkit-transform: rotate(45deg);
+-moz-transform: rotate(45deg);
+-ms-transform: rotate(45deg);
+transform: rotate(45deg);
+}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+background: white;
+color: #333;
+box-shadow: 0 3px 14px rgba(0,0,0,0.4);
+}
+.leaflet-container a.leaflet-popup-close-button {
+position: absolute;
+top: 0;
+right: 0;
+border: none;
+text-align: center;
+width: 24px;
+height: 24px;
+font: 16px/24px Tahoma, Verdana, sans-serif;
+color: #757575;
+text-decoration: none;
+background: transparent;
+}
+.leaflet-container a.leaflet-popup-close-button:hover,
+.leaflet-container a.leaflet-popup-close-button:focus {
+color: #585858;
+}
+.leaflet-popup-scrolled {
+overflow: auto;
+}
+.leaflet-oldie .leaflet-popup-content-wrapper {
+-ms-zoom: 1;
+}
+.leaflet-oldie .leaflet-popup-tip {
+width: 24px;
+margin: 0 auto;
+-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678)";
+filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678);
+}
+.leaflet-oldie .leaflet-control-zoom,
+.leaflet-oldie .leaflet-control-layers,
+.leaflet-oldie .leaflet-popup-content-wrapper,
+.leaflet-oldie .leaflet-popup-tip {
+border: 1px solid #999;
+}
+.leaflet-div-icon {
+background: #fff;
+border: 1px solid #666;
+}
+.leaflet-tooltip {
+position: absolute;
+padding: 6px;
+background-color: #fff;
+border: 1px solid #fff;
+border-radius: 3px;
+color: #222;
+white-space: nowrap;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+pointer-events: none;
+box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+.leaflet-tooltip.leaflet-interactive {
+cursor: pointer;
+pointer-events: auto;
+}
+.leaflet-tooltip-top:before,
+.leaflet-tooltip-bottom:before,
+.leaflet-tooltip-left:before,
+.leaflet-tooltip-right:before {
+position: absolute;
+pointer-events: none;
+border: 6px solid transparent;
+background: transparent;
+content: "";
+}
+.leaflet-tooltip-bottom {
+margin-top: 6px;
+}
+.leaflet-tooltip-top {
+margin-top: -6px;
+}
+.leaflet-tooltip-bottom:before,
+.leaflet-tooltip-top:before {
+left: 50%;
+margin-left: -6px;
+}
+.leaflet-tooltip-top:before {
+bottom: 0;
+margin-bottom: -12px;
+border-top-color: #fff;
+}
+.leaflet-tooltip-bottom:before {
+top: 0;
+margin-top: -12px;
+margin-left: -6px;
+border-bottom-color: #fff;
+}
+.leaflet-tooltip-left {
+margin-left: -6px;
+}
+.leaflet-tooltip-right {
+margin-left: 6px;
+}
+.leaflet-tooltip-left:before,
+.leaflet-tooltip-right:before {
+top: 50%;
+margin-top: -6px;
+}
+.leaflet-tooltip-left:before {
+right: 0;
+margin-right: -12px;
+border-left-color: #fff;
+}
+.leaflet-tooltip-right:before {
+left: 0;
+margin-left: -12px;
+border-right-color: #fff;
+}
+@media print {
+.leaflet-control {
+-webkit-print-color-adjust: exact;
+print-color-adjust: exact;
+}
+}
+
+</style>
+<style>
+/* Layout: one-screen atlas. Map fills the left; a reading column on the right (bottom sheet on phones).
+   Palette: farmland greys with a green bias for ground, ink for type, ochre roads, canal blue; party hues only carry results. */
+:root {
+  --ground: #eef1ec;      /* map paper: Punjab fields */
+  --paper: #fbfcfa;       /* panel */
+  --ink: #1d231f;
+  --ink-2: #4b554e;
+  --ink-3: #7a847d;
+  --rule: #d8ded8;
+  --wash: #e6ebe5;
+  --built: #d9d3c7;
+  --road: #c98a2b;
+  --road-2: #d9b77c;
+  --street: #c9cfc8;
+  --canal: #3d86c6;
+  --rail: #5f5a66;
+  --sel: #c2185b;         /* selection outline, kept off every party hue */
+  --aap: #2559B8; --inc: #0B8C78; --bjp: #E06F0B; --sada: #7E4CB4; --sad: #9C7C00; --oth: #8d9099;
+  --seq-0: #f3e6ec; --seq-1: #e6c3d3; --seq-2: #d19ab6; --seq-3: #b56f97; --seq-4: #904a77; --seq-5: #632b53;
+  --div-neg: #b4532a; --div-mid: #c9ccc8; --div-pos: #0B8C78;
+  /* map fills: the same in both themes so that darker always means more */
+  --fill-0: #f4e9ef; --fill-1: #e3c4d4; --fill-2: #cc9ab5; --fill-3: #ad6c94; --fill-4: #864472; --fill-5: #5a234c;
+  --fill-pale: #eef0ec; --fill-neg: #9e4320; --fill-mid: #e4e6e2; --fill-pos: #087463;
+  --ok: #2f7d32; --warn: #b26a00;
+  --f-ui: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-pa: "Noto Sans Gurmukhi", "Raavi", "Mukta Mahee", sans-serif;
+  --shadow: 0 1px 2px rgba(20,30,25,.12), 0 6px 18px rgba(20,30,25,.10);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #151b19; --paper: #1b2220; --ink: #e9eee9; --ink-2: #b5c0b8; --ink-3: #87938b; --rule: #2f3935; --wash: #232c29;
+    --built: #3a3631; --road: #c9923f; --road-2: #8a7350; --street: #34403b; --canal: #5aa0dc; --rail: #a39cab; --sel: #f06292;
+    --aap: #4F7FD6; --inc: #14A08C; --bjp: #DB7425; --sada: #9268CC; --sad: #AE8C1F; --oth: #7d828b;
+    --seq-0: #2a2028; --seq-1: #4a2c41; --seq-2: #6e3a5f; --seq-3: #95507f; --seq-4: #bd70a1; --seq-5: #e3a2c6;
+    --div-neg: #d9774c; --div-mid: #46504b; --div-pos: #2fb59f; --ok: #6cc070; --warn: #e0a040;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 22px rgba(0,0,0,.35);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ground: #151b19; --paper: #1b2220; --ink: #e9eee9; --ink-2: #b5c0b8; --ink-3: #87938b; --rule: #2f3935; --wash: #232c29;
+  --built: #3a3631; --road: #c9923f; --road-2: #8a7350; --street: #34403b; --canal: #5aa0dc; --rail: #a39cab; --sel: #f06292;
+  --aap: #4F7FD6; --inc: #14A08C; --bjp: #DB7425; --sada: #9268CC; --sad: #AE8C1F; --oth: #7d828b;
+  --seq-0: #2a2028; --seq-1: #4a2c41; --seq-2: #6e3a5f; --seq-3: #95507f; --seq-4: #bd70a1; --seq-5: #e3a2c6;
+  --div-neg: #d9774c; --div-mid: #46504b; --div-pos: #2fb59f; --ok: #6cc070; --warn: #e0a040;
+  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 22px rgba(0,0,0,.35);
+  color-scheme: dark;
+}
+html, body { height: 100%; }
+body { background: var(--ground); color: var(--ink); font-family: var(--f-ui); font-size: 14px; line-height: 1.45; }
+.pa { font-family: var(--f-pa); }
+.num { font-variant-numeric: tabular-nums; }
+button, select, input { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--sel); outline-offset: 2px; }
+
+.app { height: 100%; display: grid; grid-template-rows: auto 1fr; }
+.bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; background: var(--paper); border-bottom: 1px solid var(--rule);
+  padding-block: 8px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); position: relative; z-index: 1200; }
+.brand { display: flex; align-items: baseline; gap: 10px; min-width: 0; margin-right: auto; }
+.brand h1 { font-size: 17px; font-weight: 750; font-stretch: 88%; letter-spacing: .01em; margin: 0; white-space: nowrap; }
+@media (max-width: 1420px) { .brand .sub { display: none; } }
+.brand .sub { color: var(--ink-3); font-size: 12px; font-stretch: 85%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ctl { display: flex; align-items: center; gap: 6px; }
+.ctl label { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3); font-stretch: 85%; }
+select, .search input { background: var(--wash); border: 1px solid var(--rule); border-radius: 6px; padding: 6px 8px; min-width: 0; }
+.search { position: relative; }
+.search input { width: 220px; max-width: 46vw; }
+.hits { position: absolute; top: calc(100% + 4px); left: 0; width: 300px; max-width: 86vw; background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; box-shadow: var(--shadow); overflow: hidden; }
+.hits button { display: flex; width: 100%; gap: 10px; align-items: baseline; text-align: left; padding: 8px 10px; background: none; border: 0; border-bottom: 1px solid var(--rule); cursor: pointer; }
+.hits button:hover, .hits button:focus-visible { background: var(--wash); }
+.hits b { font-variant-numeric: tabular-nums; min-width: 2.6em; }
+.btn { background: var(--wash); border: 1px solid var(--rule); border-radius: 6px; padding: 6px 10px; cursor: pointer; white-space: nowrap; }
+.btn:hover { border-color: var(--ink-3); }
+.btn[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.btn.small { padding: 3px 8px; font-size: 12px; }
+
+.main { position: relative; display: grid; grid-template-columns: minmax(0,1fr) 420px; min-height: 0; }
+.mapwrap { position: relative; min-height: 0; min-width: 0; }
+#map { position: absolute; inset: 0; background: var(--ground); }
+#panel { min-height: 0; overflow-y: auto; background: var(--paper); border-left: 1px solid var(--rule);
+  padding-block: 18px 40px; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+@media (max-width: 860px) {
+  .main { grid-template-columns: 1fr; grid-template-rows: minmax(260px,1fr) auto; }
+  #panel { border-left: 0; border-top: 1px solid var(--rule); max-height: 46vh; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .brand .sub { display: none; }
+  .bar { gap: 6px 8px; }
+  .brand { width: 100%; }
+  .brand h1 { font-size: 16px; }
+  .search { flex: 1 1 120px; } .search input { width: 100%; max-width: none; }
+  .ctl label { display: none; }
+  select, .search input, .btn { padding: 5px 7px; }
+  .legend { font-size: 11px; padding: 6px 8px; min-width: 0; max-width: calc(100% - 70px); bottom: 26px; }
+  .legend .note { display: none; }
+}
+
+/* panel typography */
+.eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-3); font-stretch: 85%; font-weight: 600; }
+.ptitle { font-size: 26px; font-weight: 780; font-stretch: 80%; line-height: 1.1; margin: 4px 0 2px; text-wrap: balance; }
+.ptitle .no { color: var(--ink-3); font-weight: 600; margin-right: 6px; }
+.pa-name { font-family: var(--f-pa); font-size: 16px; color: var(--ink-2); }
+.addr { font-family: var(--f-pa); font-size: 13px; color: var(--ink-2); margin-top: 4px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 2px; }
+.chip { font-size: 11.5px; border: 1px solid var(--rule); border-radius: 999px; padding: 2px 9px; background: var(--wash); color: var(--ink-2); }
+.chip.good { border-color: color-mix(in srgb, var(--ok) 50%, var(--rule)); color: var(--ok); }
+.chip.warn { border-color: color-mix(in srgb, var(--warn) 50%, var(--rule)); color: var(--warn); }
+.chip a { color: inherit; }
+section.blk { border-top: 1px solid var(--rule); margin-top: 18px; padding-top: 14px; }
+section.blk h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .1em; font-stretch: 85%; color: var(--ink-3); margin: 0 0 10px; font-weight: 650; display: flex; justify-content: space-between; gap: 8px; }
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 10px; }
+.kpis.two { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px 16px; }
+.kpi { min-width: 0; }
+.kpi .v { font-size: 22px; font-weight: 720; font-stretch: 82%; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.kpi .l { font-size: 11px; color: var(--ink-3); line-height: 1.25; }
+.note { font-size: 12px; color: var(--ink-3); }
+.note.inline { margin-top: 6px; }
+.genderbar { display: flex; height: 10px; gap: 2px; margin: 12px 0 4px; }
+.genderbar span { display: block; border-radius: 3px; }
+.legendrow { display: flex; gap: 14px; font-size: 12px; color: var(--ink-2); flex-wrap: wrap; }
+.sw { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+table.t { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+table.t th { text-align: left; font-weight: 600; color: var(--ink-3); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; padding: 4px 6px 4px 0; border-bottom: 1px solid var(--rule); font-stretch: 85%; }
+table.t td { padding: 6px 6px 6px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+table.t td.r, table.t th.r { text-align: right; font-variant-numeric: tabular-nums; }
+.scroll-x { overflow-x: auto; }
+.res { display: grid; gap: 6px; }
+.res .row { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 2px 10px; align-items: baseline; }
+.res .who { font-size: 12.5px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.res .who b { font-weight: 650; }
+.res .val { font-size: 12.5px; font-variant-numeric: tabular-nums; color: var(--ink-2); }
+.res .track { grid-column: 1 / -1; height: 8px; background: var(--wash); border-radius: 4px; overflow: hidden; }
+.res .fill { height: 100%; border-radius: 0 4px 4px 0; }
+.restitle { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin: 0 0 8px; }
+.restitle h3 { font-size: 15px; margin: 0; font-weight: 700; font-stretch: 88%; }
+.resgrid { display: grid; gap: 18px; }
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+.figure img { width: 100%; border: 1px solid var(--rule); border-radius: 6px; background: #fff; cursor: zoom-in; display: block; }
+.figure figcaption { font-size: 11.5px; color: var(--ink-3); margin-top: 4px; }
+.figs { display: grid; gap: 12px; }
+.listbtn { display: grid; grid-template-columns: 2.6em minmax(0,1fr) auto; gap: 8px; width: 100%; text-align: left; background: none; border: 0; border-bottom: 1px solid var(--rule); padding: 7px 0; cursor: pointer; align-items: baseline; }
+.listbtn:hover { background: var(--wash); }
+.listbtn .n { color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.listbtn .m { font-variant-numeric: tabular-nums; font-size: 12.5px; color: var(--ink-2); }
+.pyr text { fill: var(--ink-2); font-size: 11px; font-family: var(--f-ui); }
+.pyr .axis { stroke: var(--rule); }
+.tip { position: fixed; z-index: 3000; pointer-events: none; background: var(--paper); color: var(--ink); border: 1px solid var(--rule); border-radius: 6px; padding: 6px 8px; font-size: 12px; box-shadow: var(--shadow); max-width: 260px; }
+
+/* map furniture */
+.legend { position: absolute; z-index: 900; left: max(10px, env(safe-area-inset-left, 0px)); bottom: 22px; min-width: 210px; background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; padding: 8px 10px; box-shadow: var(--shadow); max-width: min(330px, calc(100% - 80px)); font-size: 12px; }
+.legend .lt { font-weight: 650; font-size: 12px; margin-bottom: 6px; }
+.legend .ramp { display: flex; height: 10px; border-radius: 3px; overflow: hidden; }
+.legend .ramp span { flex: 1; }
+.legend .ends { display: flex; justify-content: space-between; color: var(--ink-3); font-size: 11px; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.legend .keys { display: flex; flex-wrap: wrap; gap: 4px 12px; }
+.legend .leadkey { display: flex; flex-wrap: wrap; gap: 4px 10px; margin-top: 6px; color: var(--ink-2); }
+.layers { position: absolute; z-index: 1100; right: 10px; top: 10px; background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; box-shadow: var(--shadow); padding: 10px 12px; width: 250px; max-width: calc(100% - 20px); max-height: calc(100% - 20px); overflow: auto; }
+.layers h4 { margin: 8px 0 4px; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3); font-stretch: 85%; }
+.layers label { display: flex; align-items: center; gap: 8px; padding: 3px 0; font-size: 13px; cursor: pointer; }
+.layers .cnt { margin-left: auto; color: var(--ink-3); font-size: 11.5px; font-variant-numeric: tabular-nums; }
+.editbar { position: absolute; z-index: 1000; left: 50%; transform: translateX(-50%); top: 10px; background: var(--ink); color: var(--paper); border-radius: 8px; padding: 8px 12px; box-shadow: var(--shadow); font-size: 13px; display: flex; gap: 10px; align-items: center; max-width: calc(100% - 20px); flex-wrap: wrap; }
+.editbar select, .editbar input { background: color-mix(in srgb, var(--paper) 14%, transparent); color: inherit; border: 1px solid color-mix(in srgb, var(--paper) 40%, transparent); border-radius: 6px; padding: 4px 8px; }
+.editbar option { background: var(--paper); color: var(--ink); }
+.editbar input::placeholder { color: color-mix(in srgb, var(--paper) 70%, transparent); }
+.editbar .btn { background: transparent; color: inherit; border-color: color-mix(in srgb, var(--paper) 40%, transparent); }
+.toast { position: fixed; z-index: 3500; left: 50%; transform: translateX(-50%); bottom: max(20px, env(safe-area-inset-bottom, 0px)); background: var(--ink); color: var(--paper); border-radius: 8px; padding: 10px 14px; font-size: 13px; box-shadow: var(--shadow); max-width: min(520px, calc(100% - 32px)); }
+.guide-back { position: fixed; inset: 0; z-index: 4500; background: rgba(12,18,15,.55); display: grid; place-items: center;
+  padding-block: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-bottom, 0px)); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.guide { background: var(--paper); color: var(--ink); border: 1px solid var(--rule); border-radius: 12px; box-shadow: var(--shadow); width: min(620px, 100%); max-height: 100%; overflow-y: auto; padding: 22px 24px 18px; }
+.guide h2 { font-size: 22px; font-weight: 780; font-stretch: 82%; margin: 4px 0 12px; text-wrap: balance; }
+.guide .steps { margin: 0; padding-left: 22px; display: grid; gap: 9px; font-size: 13.5px; line-height: 1.5; max-width: 66ch; }
+.guide .steps li::marker { color: var(--ink-3); font-weight: 650; }
+.guide .keyrow { white-space: nowrap; color: var(--ink-2); }
+.guide .keyrow .sw { margin-right: 2px; }
+.guide-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--rule); }
+.guide-foot label { display: flex; gap: 8px; align-items: center; font-size: 13px; color: var(--ink-2); cursor: pointer; }
+.btn.primary { background: var(--ink); color: var(--paper); border-color: var(--ink); font-weight: 600; padding: 8px 14px; }
+@media (max-width: 860px) { #helpBtn { order: 3; } .guide { padding: 18px 16px 14px; } .guide h2 { font-size: 19px; } }
+.lightbox { position: fixed; inset: 0; z-index: 4000; background: rgba(10,14,12,.82); display: grid; place-items: center; padding: 20px; }
+.lightbox img { max-width: min(1100px, 100%); max-height: 100%; background: #fff; border-radius: 6px; }
+
+/* leaflet bits */
+.leaflet-container { background: var(--ground); font-family: var(--f-ui); }
+.leaflet-bar a { background: var(--paper); color: var(--ink); border-bottom-color: var(--rule); }
+.leaflet-bar a:hover { background: var(--wash); }
+.leaflet-control-attribution { background: color-mix(in srgb, var(--paper) 85%, transparent) !important; color: var(--ink-3) !important; font-size: 10.5px !important; }
+.leaflet-control-attribution a { color: var(--ink-2) !important; }
+.vlabel { font-size: 11px; color: var(--ink-2); font-stretch: 88%; white-space: nowrap; text-shadow: 0 0 2px var(--ground), 0 0 3px var(--ground), 0 0 4px var(--ground); pointer-events: none; transform: translate(-50%, -50%); }
+.vlabel.town { font-size: 13px; font-weight: 700; color: var(--ink); letter-spacing: .04em; text-transform: uppercase; }
+.blabel { font-size: 10.5px; font-weight: 700; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 4px; padding: 0 3px; font-variant-numeric: tabular-nums; transform: translate(6px, -14px); white-space: nowrap; pointer-events: none; }
+.poi { width: 18px; height: 18px; border-radius: 4px; display: grid; place-items: center; font-size: 10px; font-weight: 750; color: var(--paper); background: var(--ink-2); border: 1.5px solid var(--paper); box-shadow: 0 1px 2px rgba(0,0,0,.35); font-stretch: 85%; }
+.poi.team { border-color: var(--sel); }
+.spot { font-size: 11px; font-family: var(--f-pa); background: var(--paper); color: var(--ink); border: 1.5px solid var(--sel); border-radius: 4px; padding: 0 4px; white-space: nowrap; transform: translate(-50%, -50%); }
+.leaflet-tooltip.tt { background: var(--paper); color: var(--ink); border: 1px solid var(--rule); box-shadow: var(--shadow); font-family: var(--f-ui); font-size: 12px; }
+.leaflet-tooltip.tt::before { display: none; }
+@media (prefers-reduced-motion: reduce) { .leaflet-zoom-anim .leaflet-zoom-animated { transition: none !important; } }
+</style>
+
+<div class="app">
+  <header class="bar">
+    <div class="brand"><h1>Fatehgarh Sahib Booth Atlas</h1><span class="sub">AC 55 · SIR final roll, 12 Oct 2026 · 214 polling stations</span></div>
+    <div class="ctl search"><input id="q" type="search" placeholder="Booth no. or village" autocomplete="off" aria-label="Find a booth by number or village"><div class="hits" id="hits" hidden></div></div>
+    <div class="ctl"><label for="mode">Colour by</label>
+      <select id="mode">
+        <optgroup label="Results">
+          <option value="win22">Winner 2022</option>
+          <option value="win17">Winner 2017</option>
+          <option value="aap22">AAP share 2022</option>
+          <option value="inc_sw">INC change 2017→2022</option>
+          <option value="sadbjp22">SAD + BJP share 2022</option>
+        </optgroup>
+        <optgroup label="Voters (2026 roll)">
+          <option value="electors">Voters per booth</option>
+          <option value="sexratio">Women per 1,000 men</option>
+          <option value="young">Aged 18–29</option>
+          <option value="old">Aged 60+</option>
+          <option value="added">New voters added</option>
+        </optgroup>
+      </select></div>
+    <button class="btn" id="helpBtn" aria-haspopup="dialog" title="How to use this map">Help</button>
+    <button class="btn" id="layersBtn" aria-expanded="false" aria-controls="layers">Layers</button>
+    <button class="btn" id="editBtn" aria-pressed="false" hidden>Correct the map</button>
+  </header>
+  <div class="main">
+    <div class="mapwrap">
+      <div id="map" role="region" aria-label="Constituency map"></div>
+      <div class="legend" id="legend"></div>
+      <div class="layers" id="layers" hidden></div>
+      <div class="editbar" id="editbar" hidden></div>
+    </div>
+    <aside id="panel" aria-live="polite"></aside>
+  </div>
+</div>
+<div class="tip" id="tip" hidden></div>
+<div class="toast" id="toast" role="status" hidden></div>
+<div class="guide-back" id="guide" hidden>
+  <div class="guide" role="dialog" aria-modal="true" aria-labelledby="guideTitle">
+    <div class="eyebrow">AC 55 Fatehgarh Sahib · 214 polling stations</div>
+    <h2 id="guideTitle">How to use the booth atlas</h2>
+    <ol class="steps">
+      <li><b>Click any booth or its shaded area.</b> Its full profile opens on the right (below the map on a phone): voters, men and women, an age pyramid, its streets or mohallas, and past results.</li>
+      <li><b>Change what the map shows</b> with <i>Colour by</i>: the 2022 or 2017 leader, party shares, INC change since 2017, voters per booth, women per 1,000 men, young and older voters, or new voters. <span class="keyrow"><span class="sw" style="background:var(--fill-1)"></span><span class="sw" style="background:var(--fill-3)"></span><span class="sw" style="background:var(--fill-5)"></span> darker always means more.</span> For leaders, pale areas were close contests.</li>
+      <li><b>Search</b> by booth number, village, or a street or mohalla name.</li>
+      <li><b>Layers</b> turns on gurdwaras and temples, health centres, schools, water and sewage works, government offices, and heritage sites. It also has the Google Earth download.</li>
+      <li><b>Inside a booth:</b> hover the age bars for exact numbers, check how its past results were matched, and tap the official roll pages to enlarge them. They include ECI's own hand-drawn map of the booth area.</li>
+      <li><b>Solid dots</b> are ECI's own GPS points. <b>Hollow dots</b> are approximate, mostly inside Sirhind town. Booth areas are estimates from the nearest polling station, not official boundaries.</li>
+      <li><b>Correct the map</b> (on the team's Claude link, for members with edit access): move a booth to its real building, pin each street or mohalla, and add places. Everyone sees the changes.</li>
+    </ol>
+    <div class="guide-foot">
+      <label><input type="checkbox" id="guideHide"> Don't show this again</label>
+      <button class="btn primary" id="guideClose">Start exploring</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+(function () {
+const $ = s => document.querySelector(s);
+const fmt = n => n == null ? "–" : Number(n).toLocaleString("en-IN");
+const pct = (a, b, d = 1) => b ? (100 * a / b).toFixed(d) : "–";
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const BANDS = ["18–19", "20–29", "30–39", "40–49", "50–59", "60–69", "70–79", "80+"];
+const PARTY_TOKEN = { "AAP": "--aap", "INC": "--inc", "BJP": "--bjp", "SAD": "--sad", "SAD(A)": "--sada", "SAD(M)": "--sada" };
+const CAND17 = { INC: "Kuljit Singh Nagra", SAD: "Didar Singh Bhatti", AAP: "Lakhbir Singh Rai", "SAD(M)": "Kuldip Singh", APP: "Tarlochan Singh" };
+const CAND22 = { AAP: "Lakhbir Singh Rai", INC: "Kuljit Singh Nagra", BJP: "Didar Singh Bhatti", "SAD(A)": "Emaan Singh Mann", SAD: "Jagdeep Singh Cheema", SSP: "Sarbjeet Singh (Makhan)", PKD: "Amritbir Singh Bhalmajra", SamSP: "Sukhvir Singh", LIP: "Gurwinder Singh", "ASP(KR)": "Bahal Singh", IND: "Nawab Ali", "IND ": "Balwant Singh" };
+const POI = {
+  health: { label: "Health", code: "+", color: "--div-neg" },
+  education: { label: "Schools & colleges", code: "S", color: "--ink-2" },
+  worship: { label: "Gurdwaras, temples, mosques", code: "", color: "--sada" },
+  water: { label: "Water & sewage", code: "W", color: "--canal" },
+  civic: { label: "Government, banks, mandis", code: "G", color: "--ink-3" },
+  transport: { label: "Bus & rail", code: "T", color: "--rail" },
+  heritage: { label: "Heritage sites", code: "H", color: "--sad" }
+};
+const WORSHIP_CODE = { "Gurdwara": "G", "Mandir": "M", "Masjid / Dargah": "Ms", "Church": "C", "Place of worship": "P" };
+const LOC = {
+  eci2017: ["good", "ECI GPS point (2017 booth)"],
+  "same-village": ["", "Same building as a neighbouring booth"],
+  village: ["warn", "Village centre: check the building"],
+  approx: ["warn", "Approximate: please correct"],
+  "town-approx": ["warn", "Approximate inside town: please correct"],
+  "town-osm": ["good", "Building found on OpenStreetMap"],
+  team: ["good", "Corrected by your team"]
+};
+const S = { booths: [], by: {}, units: {}, areas: null, places: [], base: null, mode: "win22", sel: null, layersOn: { areas: true, booths: true, streets: true, built: true, spots: true }, poiOn: { health: false, education: false, worship: true, water: true, civic: false, transport: false, heritage: true },
+  pins: {}, spots: {}, team: {}, db: null, user: null, canWrite: null, editing: false, placing: null, downloads: null };
+let C = {};
+function readTokens() { const cs = getComputedStyle(document.documentElement); const names = ["ground","paper","ink","ink-2","ink-3","rule","wash","built","road","road-2","street","canal","rail","sel","aap","inc","bjp","sada","sad","oth","seq-0","seq-1","seq-2","seq-3","seq-4","seq-5","div-neg","div-mid","div-pos","fill-0","fill-1","fill-2","fill-3","fill-4","fill-5","fill-pale","fill-neg","fill-mid","fill-pos"]; C = {}; names.forEach(n => C[n] = cs.getPropertyValue("--" + n).trim()); }
+const partyColor = p => C[(PARTY_TOKEN[p] || "--oth").slice(2)] || C.oth;
+
+function boot() {
+  readTokens();
+  const map = L.map("map", { zoomControl: false, minZoom: 10, maxZoom: 18, attributionControl: true, preferCanvas: false });
+  S.map = map;
+  L.control.zoom({ position: "bottomright" }).addTo(map);
+  map.attributionControl.setPrefix(false).addAttribution('© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors · ECI · CEO Punjab');
+  try { new ResizeObserver(() => map.invalidateSize({ pan: false })).observe($("#map")); } catch (e) {}
+  map.createPane("base").style.zIndex = 250;
+  map.createPane("areas").style.zIndex = 380;
+  map.createPane("labels").style.zIndex = 420;
+  map.createPane("poi").style.zIndex = 560;
+  map.createPane("booths").style.zIndex = 600;
+  S.canvas = L.canvas({ pane: "base", padding: 0.4 });
+  map.setView([30.58, 76.43], 11);
+  Promise.all(["data/booths.json", "data/units.json", "data/areas.geojson", "data/places.json", "data/basemap.json", "data/ac55.geojson"].map(u => fetch(u).then(r => { if (!r.ok) throw new Error(u + " " + r.status); return r.json(); })))
+    .then(([booths, units, areas, places, base, ac]) => {
+      S.booths = booths; booths.forEach(b => S.by[b.part] = b);
+      units.forEach(u => S.units[u.id] = u);
+      S.areas = areas; S.places = places; S.base = base; S.ac = ac;
+      buildBase(); buildAreas(); buildBooths(); buildPlaces(); buildLayersMenu(); restyle();
+      const acL = L.geoJSON(ac, { pane: "labels", interactive: false, style: () => ({ color: C.ink, weight: 2.2, opacity: .75, fill: false, dashArray: "6 4" }) }).addTo(map);
+      S.acLayer = acL;
+      map.fitBounds(acL.getBounds(), { padding: [10, 10], animate: false });
+      renderPanel();
+      const h = (location.hash || "").replace("#", "");
+      if (/^booth\d+$/.test(h) && S.by[+h.slice(5)]) { const n = +h.slice(5); select(n, false); requestAnimationFrame(() => { map.invalidateSize({ pan: false }); map.setView(pos(S.by[n]), 14, { animate: false }); }); }
+      connectStore();
+    })
+    .catch(err => { $("#panel").innerHTML = `<p class="eyebrow">Could not load the map data</p><p>${esc(err.message)}. Reload the page; if it keeps failing, the data files are missing from this version.</p>`; });
+  map.on("zoomend moveend", () => { drawLabels(); });
+  map.on("click", e => { if (S.placing) finishPlacing(e.latlng); });
+}
+
+/* ---------------------------------------------------------------- basemap */
+function ll(g) { return g.map(p => [p[1], p[0]]); }
+function buildBase() {
+  const Lr = S.base.layers, map = S.map, r = S.canvas;
+  const mk = (rows, poly) => rows.map(x => ll(x[1])).filter(a => a.length > 1);
+  S.bl = {
+    built: L.polygon(mk(Lr.built), { renderer: r, interactive: false, stroke: false, fillOpacity: 1 }),
+    industry: L.polygon(mk(Lr.industry), { renderer: r, interactive: false, stroke: false, fillOpacity: 1 }),
+    water: L.polygon(mk(Lr.water), { renderer: r, interactive: false, stroke: false, fillOpacity: .6 }),
+    drain: L.polyline(mk(Lr.drain), { renderer: r, interactive: false, weight: 1 }),
+    canal: L.polyline(mk(Lr.canal), { renderer: r, interactive: false, weight: 3 }),
+    street: L.polyline(mk(Lr.street), { renderer: r, interactive: false, weight: 1 }),
+    minor: L.polyline(mk(Lr.minor), { renderer: r, interactive: false, weight: 1.6 }),
+    major: L.polyline(mk(Lr.major), { renderer: r, interactive: false, weight: 2.8 }),
+    rail: L.polyline(mk(Lr.rail), { renderer: r, interactive: false, weight: 1.6, dashArray: "6 4" })
+  };
+  ["built", "industry", "water", "drain", "canal", "street", "minor", "major", "rail"].forEach(k => S.bl[k].addTo(map));
+  S.labelLayer = L.layerGroup().addTo(map);
+  S.boothLabelLayer = L.layerGroup().addTo(map);
+}
+function styleBase() {
+  const b = S.bl; if (!b) return;
+  b.built.setStyle({ fillColor: C.built }); b.industry.setStyle({ fillColor: C.built });
+  b.water.setStyle({ fillColor: C.canal }); b.drain.setStyle({ color: C.canal, opacity: .45 }); b.canal.setStyle({ color: C.canal, opacity: .9 });
+  b.street.setStyle({ color: C.street, opacity: 1 }); b.minor.setStyle({ color: C["road-2"] }); b.major.setStyle({ color: C.road }); b.rail.setStyle({ color: C.rail });
+}
+function drawLabels() {
+  if (!S.base) return;
+  const map = S.map, z = map.getZoom(), bounds = map.getBounds().pad(0.1);
+  S.labelLayer.clearLayers(); S.boothLabelLayer.clearLayers();
+  // streets fade in only when they can be read
+  if (S.bl) { const on = z >= 13 && S.layersOn.streets; if (on && !map.hasLayer(S.bl.street)) S.bl.street.addTo(map); if (!on && map.hasLayer(S.bl.street)) map.removeLayer(S.bl.street); }
+  S.base.labels.forEach(([name, kind, lon, lat]) => {
+    if (!name) return;
+    const town = kind === "town" || kind === "city";
+    if (!town && z < 12) return;
+    if (!bounds.contains([lat, lon])) return;
+    L.marker([lat, lon], { pane: "labels", interactive: false, keyboard: false, icon: L.divIcon({ className: "", html: `<div class="vlabel${town ? " town" : ""}">${esc(name)}</div>`, iconSize: [0, 0] }) }).addTo(S.labelLayer);
+  });
+  if (z >= 13 && S.layersOn.booths) S.booths.forEach(b => {
+    const p = pos(b); if (!bounds.contains(p)) return;
+    L.marker(p, { pane: "booths", interactive: false, keyboard: false, icon: L.divIcon({ className: "", html: `<div class="blabel">${b.part}</div>`, iconSize: [0, 0] }) }).addTo(S.boothLabelLayer);
+  });
+}
+
+/* ---------------------------------------------------------------- areas & metrics */
+function areaParts(f) { return f.properties.parts.map(n => S.by[n]).filter(Boolean); }
+function unitOf(b) { return b && S.units[b.unit]; }
+function winner(r) { if (!r) return null; const e = Object.entries(r.votes).sort((a, b) => b[1] - a[1]); return { p: e[0][0], v: e[0][1], second: e[1], margin: (e[0][1] - e[1][1]) / Math.max(1, r.valid) }; }
+function share(r, keys) { if (!r) return null; return keys.reduce((s, k) => s + (r.votes[k] || 0), 0) / Math.max(1, r.valid); }
+function metric(bs) {
+  const u = unitOf(bs[0]);
+  const sum = k => bs.reduce((s, b) => s + (b[k] || 0), 0);
+  const ages = BANDS.map((_, i) => bs.reduce((s, b) => s + b.ages[i][0] + b.ages[i][1] + b.ages[i][2], 0));
+  const known = ages.reduce((a, b) => a + b, 0);
+  switch (S.mode) {
+    case "win22": return u && u.r22 ? winner(u.r22) : null;
+    case "win17": return u && u.r17 ? winner(u.r17) : null;
+    case "aap22": return u && u.r22 ? share(u.r22, ["AAP"]) : null;
+    case "sadbjp22": return u && u.r22 ? share(u.r22, ["SAD", "BJP"]) : null;
+    case "inc_sw": return u && u.r22 && u.r17 ? share(u.r22, ["INC"]) - share(u.r17, ["INC"]) : null;
+    case "electors": return sum("total") / bs.length;
+    case "sexratio": { const m = sum("male"); return m ? 1000 * sum("female") / m : null; }
+    case "young": return known ? (ages[0] + ages[1]) / known : null;
+    case "old": return known ? (ages[5] + ages[6] + ages[7]) / known : null;
+    case "added": { const t = sum("total"); return t ? sum("added") / t : null; }
+  }
+}
+const SEQ = () => [C["fill-0"], C["fill-1"], C["fill-2"], C["fill-3"], C["fill-4"], C["fill-5"]];
+/* party fills for the map: one set for both themes; full colour = big lead, paler = close contest */
+const FILL_PARTY = { "AAP": "#2559B8", "INC": "#0B8C78", "BJP": "#E06F0B", "SAD(A)": "#7E4CB4", "SAD(M)": "#7E4CB4", "SAD": "#9C7C00" };
+const fillParty = p => FILL_PARTY[p] || "#8d9099";
+const LEAD_STEPS = [[.10, .36], [.25, .68], [9, 1]];
+const leadMix = (p, margin) => mix(C["fill-pale"], fillParty(p), LEAD_STEPS.find(s => margin < s[0])[1]);
+function swingColor(v) { const sc = SCALES.inc_sw; return v < 0 ? mix(C["fill-neg"], C["fill-mid"], Math.max(0, Math.min(1, (v - sc.lo) / -sc.lo))) : mix(C["fill-mid"], C["fill-pos"], Math.min(1, v / sc.hi)); }
+const SCALES = {
+  aap22: { lo: .25, hi: .65, f: v => (v * 100).toFixed(0) + "%", t: "AAP vote share, 2022" },
+  sadbjp22: { lo: .05, hi: .45, f: v => (v * 100).toFixed(0) + "%", t: "SAD + BJP vote share, 2022" },
+  electors: { lo: 400, hi: 1100, f: v => fmt(Math.round(v)), t: "Voters per booth (2026 final roll)" },
+  sexratio: { lo: 850, hi: 1000, f: v => fmt(Math.round(v)), t: "Women per 1,000 men" },
+  young: { lo: .14, hi: .30, f: v => (v * 100).toFixed(0) + "%", t: "Voters aged 18–29" },
+  old: { lo: .12, hi: .30, f: v => (v * 100).toFixed(0) + "%", t: "Voters aged 60+" },
+  added: { lo: 0, hi: .08, f: v => (v * 100).toFixed(1) + "%", t: "New voters added in the claims period, per 100 voters" },
+  inc_sw: { lo: -.45, hi: .05, f: v => (v > 0 ? "+" : "") + (v * 100).toFixed(0) + " pts", t: "INC share change, 2017 → 2022" }
+};
+function colorFor(v) {
+  if (v == null) return { fill: C.wash, op: .5 };
+  if (S.mode === "win22" || S.mode === "win17") return { fill: leadMix(v.p, v.margin), op: .9 };
+  const sc = SCALES[S.mode];
+  if (S.mode === "inc_sw") return { fill: swingColor(v), op: .9 };
+  const t = Math.max(0, Math.min(.999, (v - sc.lo) / (sc.hi - sc.lo)));
+  return { fill: SEQ()[Math.floor(t * 6)], op: .9 };
+}
+function mix(a, b, t) { const pa = hex(a), pb = hex(b); if (!pa || !pb) return a; return "#" + pa.map((x, i) => Math.round(x + (pb[i] - x) * t).toString(16).padStart(2, "0")).join(""); }
+function hex(h) { const m = /^#?([0-9a-f]{6})$/i.exec(h || ""); if (!m) return null; const n = parseInt(m[1], 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; }
+function buildAreas() {
+  S.areaLayer = L.geoJSON(S.areas, {
+    pane: "areas",
+    style: f => areaStyle(f),
+    onEachFeature: (f, layer) => {
+      layer.on("click", () => { if (S.placing) return; const ps = f.properties.parts; select(S.sel && ps.includes(S.sel) ? S.sel : ps[0]); });
+      layer.on("mouseover", e => { layer.setStyle({ weight: 2 }); showTip(e.originalEvent, areaTip(f)); });
+      layer.on("mousemove", e => moveTip(e.originalEvent));
+      layer.on("mouseout", () => { layer.setStyle(areaStyle(f)); hideTip(); });
+    }
+  }).addTo(S.map);
+}
+function areaStyle(f) {
+  const bs = areaParts(f); const v = bs.length ? metric(bs) : null; const c = colorFor(v);
+  const selected = S.sel && f.properties.parts.includes(S.sel);
+  return { color: selected ? C.sel : C.paper, weight: selected ? 3 : .8, opacity: 1, fillColor: c.fill, fillOpacity: c.op };
+}
+function areaTip(f) {
+  const bs = areaParts(f); if (!bs.length) return "";
+  const v = metric(bs); let val = "";
+  if (S.mode === "win22" || S.mode === "win17") val = v ? `${v.p} ahead by ${(v.margin * 100).toFixed(1)} pts` : "No result linked";
+  else val = v == null ? "No data" : SCALES[S.mode].f(v);
+  const names = bs.map(b => `${b.part} ${esc(b.name_en)}`).join(", ");
+  return `<b>${names}</b><br>${val}`;
+}
+function restyle() {
+  readTokens(); styleBase();
+  if (S.areaLayer) S.areaLayer.setStyle(areaStyle);
+  if (S.boothLayer) S.boothLayer.eachLayer(m => m.setStyle(boothStyle(m.options.part)));
+  if (S.acLayer) S.acLayer.setStyle({ color: C.ink });
+  drawLegend(); drawLabels();
+}
+
+/* ---------------------------------------------------------------- booths */
+function pos(b) { const p = S.pins[b.part]; return p ? [p.lat, p.lon] : [b.lat, b.lon]; }
+function locKind(b) { return S.pins[b.part] ? "team" : b.loc_how; }
+function boothStyle(n) {
+  const b = S.by[n]; const sel = n === S.sel; const k = locKind(b);
+  const approx = k === "town-approx" || k === "approx" || k === "village";
+  return { radius: sel ? 7 : 4.5, color: sel ? C.sel : C.paper, weight: sel ? 3 : 1.5, fillColor: C.ink, fillOpacity: approx ? .45 : 1, dashArray: approx && !sel ? "2 2" : null };
+}
+function buildBooths() {
+  S.boothLayer = L.layerGroup().addTo(S.map);
+  S.booths.forEach(b => {
+    const m = L.circleMarker(pos(b), { pane: "booths", part: b.part, ...boothStyle(b.part) });
+    m.on("click", () => { if (!S.placing) select(b.part); });
+    m.bindTooltip(() => `<b>${b.part} · ${esc(b.name_en)}</b><br>${fmt(b.total)} voters`, { className: "tt", direction: "top", offset: [0, -6] });
+    m.addTo(S.boothLayer); b._m = m;
+  });
+}
+function moveBoothMarkers() { S.booths.forEach(b => { if (b._m) { b._m.setLatLng(pos(b)); b._m.setStyle(boothStyle(b.part)); } }); drawLabels(); }
+
+/* ---------------------------------------------------------------- places */
+function buildPlaces() {
+  S.poiLayers = {};
+  Object.keys(POI).forEach(k => { S.poiLayers[k] = L.layerGroup(); if (S.poiOn[k]) S.poiLayers[k].addTo(S.map); });
+  S.places.forEach(p => addPlaceMarker(p, false));
+  S.teamLayer = L.layerGroup();
+  S.spotLayer = L.layerGroup().addTo(S.map);
+}
+function placeIcon(p, team) {
+  const def = POI[p.cat]; const code = p.cat === "worship" ? (WORSHIP_CODE[p.kind] || "P") : def.code;
+  return L.divIcon({ className: "", iconSize: [18, 18], iconAnchor: [9, 9], html: `<div class="poi${team ? " team" : ""}" style="background:var(${def.color})">${esc(code)}</div>` });
+}
+function addPlaceMarker(p, team, id) {
+  const m = L.marker([p.lat, p.lon], { pane: "poi", icon: placeIcon(p, team), keyboard: false });
+  m.bindTooltip(`<b>${esc(p.name)}</b>${p.pa ? `<br><span class="pa">${esc(p.pa)}</span>` : ""}<br>${esc(p.kind)}${team ? " · added by your team" : ""}`, { className: "tt", direction: "top", offset: [0, -8] });
+  if (team) m.on("click", () => { if (S.editing) confirmRemovePlace(id, p); });
+  m.addTo(S.poiLayers[p.cat]);
+  return m;
+}
+
+/* ---------------------------------------------------------------- legend & layers */
+function drawLegend() {
+  const el = $("#legend");
+  if (S.mode === "win22" || S.mode === "win17") {
+    const yr = S.mode === "win22" ? 2022 : 2017;
+    const ps = S.mode === "win22" ? ["AAP", "INC", "BJP", "SAD(A)", "SAD"] : ["INC", "SAD", "AAP"];
+    const lead = ps[0];
+    el.innerHTML = `<div class="lt">Leading party by area, ${yr}</div><div class="keys">${ps.map(p => `<span><span class="sw" style="background:${fillParty(p)}"></span>${p}</span>`).join("")}</div>
+      <div class="leadkey"><span>Lead:</span>${[[.05, "under 10 pts"], [.15, "10–25"], [.4, "over 25"]].map(([m, l]) => `<span><span class="sw" style="background:${leadMix(lead, m)}"></span>${l}</span>`).join("")}</div>
+      <div class="note inline">Darker = bigger lead. Pale areas were close contests.</div>`;
+  } else {
+    const sc = SCALES[S.mode];
+    if (S.mode === "inc_sw") {
+      const ramp = [-.45, -.34, -.23, -.12, 0, .05].map(swingColor);
+      el.innerHTML = `<div class="lt">${sc.t}</div><div class="ramp">${ramp.map(c => `<span style="background:${c}"></span>`).join("")}</div><div class="ends"><span>lost 45 pts or more</span><span>no change</span><span>gained</span></div><div class="note inline">Darker = bigger change.</div>`;
+    } else {
+      el.innerHTML = `<div class="lt">${sc.t}</div><div class="ramp">${SEQ().map(c => `<span style="background:${c}"></span>`).join("")}</div><div class="ends"><span>${sc.f(sc.lo)} or less</span><span>${sc.f(sc.hi)} or more</span></div><div class="note inline">Darker = more.</div>`;
+    }
+  }
+}
+function buildLayersMenu() {
+  const counts = {}; S.places.forEach(p => counts[p.cat] = (counts[p.cat] || 0) + 1);
+  const box = $("#layers");
+  box.innerHTML = `<h4>Polling stations</h4>
+    <label><input type="checkbox" id="ly-areas" ${S.layersOn.areas ? "checked" : ""}> Booth areas (jurisdictions)</label>
+    <label><input type="checkbox" id="ly-booths" ${S.layersOn.booths ? "checked" : ""}> Booth locations</label>
+    <label><input type="checkbox" id="ly-spots" ${S.layersOn.spots ? "checked" : ""}> Streets & mohallas pinned by team</label>
+    <h4>Places of significance</h4>
+    ${Object.entries(POI).map(([k, d]) => `<label><input type="checkbox" data-poi="${k}" ${S.poiOn[k] ? "checked" : ""}> <span class="poi" style="background:var(${d.color});width:16px;height:16px">${k === "worship" ? "G" : d.code}</span> ${d.label}<span class="cnt" id="cnt-${k}">${counts[k] || 0}</span></label>`).join("")}
+    <h4>Base map</h4>
+    <label><input type="checkbox" id="ly-streets" ${S.layersOn.streets ? "checked" : ""}> Village lanes & streets</label>
+    <label><input type="checkbox" id="ly-built" ${S.layersOn.built ? "checked" : ""}> Built-up areas</label>
+    <h4>Take it offline</h4>
+    <button class="btn small" id="kmlBtn" ${S.kmlOk ? "" : "hidden"}>Download Google Earth file (.kml)</button>
+    <p class="note">Places come from OpenStreetMap, which lists only some gurdwaras, temples and schools here. ${window.claude ? "Use <b>Correct the map</b> to add the ones your team knows." : "Your team can add the ones it knows on the Claude link."}</p>`;
+  box.addEventListener("change", e => {
+    const t = e.target;
+    if (t.dataset.poi) { S.poiOn[t.dataset.poi] = t.checked; t.checked ? S.poiLayers[t.dataset.poi].addTo(S.map) : S.map.removeLayer(S.poiLayers[t.dataset.poi]); return; }
+    const k = t.id.replace("ly-", ""); S.layersOn[k] = t.checked;
+    if (k === "areas") t.checked ? S.areaLayer.addTo(S.map) : S.map.removeLayer(S.areaLayer);
+    if (k === "booths") t.checked ? S.boothLayer.addTo(S.map) : S.map.removeLayer(S.boothLayer);
+    if (k === "spots") t.checked ? S.spotLayer.addTo(S.map) : S.map.removeLayer(S.spotLayer);
+    if (k === "built") ["built", "industry"].forEach(x => t.checked ? S.bl[x].addTo(S.map) : S.map.removeLayer(S.bl[x]));
+    drawLabels();
+  });
+}
+$("#layersBtn").addEventListener("click", () => { const box = $("#layers"); box.hidden = !box.hidden; $("#layersBtn").setAttribute("aria-expanded", String(!box.hidden)); });
+$("#mode").addEventListener("change", e => { S.mode = e.target.value; restyle(); if (S.sel) renderPanel(); });
+
+/* ---------------------------------------------------------------- tooltip */
+function showTip(ev, html) { const t = $("#tip"); if (!html) return; t.innerHTML = html; t.hidden = false; moveTip(ev); }
+function moveTip(ev) { const t = $("#tip"); if (t.hidden || !ev) return; const x = Math.min(ev.clientX + 14, innerWidth - t.offsetWidth - 8), y = Math.min(ev.clientY + 14, innerHeight - t.offsetHeight - 8); t.style.left = x + "px"; t.style.top = y + "px"; }
+function hideTip() { $("#tip").hidden = true; }
+
+/* ---------------------------------------------------------------- selection & panel */
+function select(n, fly = true) {
+  const b = S.by[n]; if (!b) return;
+  const prev = S.sel; S.sel = n;
+  if (prev && S.by[prev]?._m) S.by[prev]._m.setStyle(boothStyle(prev));
+  b._m && b._m.setStyle(boothStyle(n)).bringToFront();
+  S.areaLayer && S.areaLayer.setStyle(areaStyle);
+  if (fly) { const z = Math.max(S.map.getZoom(), 13); requestAnimationFrame(() => { S.map.invalidateSize({ pan: false }); S.map.flyTo(pos(b), z, { duration: matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : .6 }); }); }
+  try { history.replaceState(null, "", "#booth" + n); } catch (e) {}
+  renderPanel(); $("#panel").scrollTop = 0;
+}
+function renderPanel() { S.sel ? renderBooth(S.by[S.sel]) : renderOverview(); }
+
+function pyramid(ages, w = 360) {
+  const maxv = Math.max(1, ...ages.map(a => Math.max(a[0], a[1])));
+  const rowH = 18, mid = w / 2, lab = 44, half = mid - lab / 2 - 6, h = rowH * ages.length + 22;
+  let s = `<svg class="pyr" viewBox="0 0 ${w} ${h}" width="100%" role="img" aria-label="Voters by age and gender">`;
+  ages.slice().reverse().forEach((a, ri) => {
+    const i = ages.length - 1 - ri, y = ri * rowH + 2;
+    const wm = half * a[0] / maxv, wf = half * a[1] / maxv;
+    s += `<rect data-tip="${BANDS[i]}: ${fmt(a[0])} men, ${fmt(a[1])} women" x="${mid - lab / 2 - wm}" y="${y}" width="${Math.max(wm, .5)}" height="${rowH - 4}" rx="3" fill="${C.aap === undefined ? "#888" : "var(--ink-2)"}" opacity=".85"/>`;
+    s += `<rect data-tip="${BANDS[i]}: ${fmt(a[0])} men, ${fmt(a[1])} women" x="${mid + lab / 2}" y="${y}" width="${Math.max(wf, .5)}" height="${rowH - 4}" rx="3" fill="var(--seq-4)"/>`;
+    s += `<text x="${mid}" y="${y + rowH / 2 + 1}" text-anchor="middle" dominant-baseline="middle">${BANDS[i]}</text>`;
+  });
+  const yb = rowH * ages.length + 14;
+  s += `<text x="${mid - lab / 2 - 4}" y="${yb}" text-anchor="end">← men</text><text x="${mid + lab / 2 + 4}" y="${yb}">women →</text></svg>`;
+  return s;
+}
+function resultBlock(r, year, cands, note) {
+  if (!r) return "";
+  const rows = Object.entries(r.votes).sort((a, b) => b[1] - a[1]).filter(([, v], i) => i < 6 || v > 0).slice(0, 7);
+  const top = rows[0][1] || 1;
+  const w = winner(r);
+  return `<div><div class="restitle"><h3>${year} Vidhan Sabha</h3><span class="note num">${fmt(r.total)} votes polled</span></div>
+    <div class="res">${rows.map(([p, v]) => `<div class="row"><div class="who"><b>${esc(p.trim())}</b> · ${esc(cands[p] || "")}</div><div class="val">${fmt(v)} <span class="note">${pct(v, r.valid)}%</span></div>
+      <div class="track"><div class="fill" style="width:${(100 * v / top).toFixed(1)}%;background:${partyColor(p.trim())}"></div></div></div>`).join("")}</div>
+    <p class="note inline">${w ? `${w.p} led by ${fmt(w.v - w.second[1])} votes (${(w.margin * 100).toFixed(1)} pts). ` : ""}NOTA ${fmt(r.nota)}. ${note || ""}</p></div>`;
+}
+function unitNote(u, b) {
+  if (!u) return "No earlier result could be linked to this booth.";
+  if (u.zone) return `Booths inside Sirhind town were renumbered, so these results cover the whole ${esc(u.zone)} zone: 2017 booths ${u.b17[0]}–${u.b17[u.b17.length - 1]}, 2022 booths ${u.b22[0]}–${u.b22[u.b22.length - 1]}.`;
+  const s17 = u.b17.join(", "), s22 = u.b22.join(", ");
+  const others = u.parts.filter(p => p !== b.part);
+  let t = `Same area as 2017 booth ${s17} and 2022 booth${u.b22.length > 1 ? "s" : ""} ${s22}.`;
+  if (others.length) t += ` Today this area is split across booths ${u.parts.join(", ")}.`;
+  if (u.confidence === "inferred") t += " The 2022 link is inferred from booth order and vote pattern.";
+  return t;
+}
+function renderBooth(b) {
+  const u = unitOf(b);
+  const k = locKind(b); const lk = LOC[k] || ["", ""];
+  const area = S.areas.features.find(f => f.properties.parts.includes(b.part));
+  const mates = area ? area.properties.parts.filter(p => p !== b.part) : [];
+  const ages = b.ages; const known = ages.reduce((s, a) => s + a[0] + a[1] + a[2], 0);
+  const young = known ? (ages[0][0] + ages[0][1] + ages[0][2] + ages[1][0] + ages[1][1] + ages[1][2]) / known : 0;
+  const sr = b.male ? Math.round(1000 * b.female / b.male) : null;
+  const [la, lo] = pos(b);
+  const secs = b.sections.filter(s => s.kind === "sec");
+  const newSec = b.sections.find(s => s.kind === "new" && s.n);
+  const unkSec = b.sections.find(s => s.kind === "unk" && s.n);
+  const spotsHere = Object.values(S.spots).filter(s => s.part === b.part);
+  $("#panel").innerHTML = `
+    <button class="btn small" id="back">← Constituency overview</button>
+    <div style="margin-top:12px" class="eyebrow">Polling station · Part ${b.part} of 214</div>
+    <div class="ptitle"><span class="no">${b.part}</span>${esc(b.name_en)}</div>
+    <div class="pa-name">${esc(b.ps_name)}${b.village && b.village !== b.ps_name ? ` · ${esc(b.village)}` : ""}</div>
+    ${b.address ? `<div class="addr">${esc(b.address)}</div>` : ""}
+    ${b.building ? `<div class="note">${esc(b.building)}</div>` : ""}
+    <div class="chips"><span class="chip ${lk[0]}">${lk[1]}</span>${b.police ? `<span class="chip pa">ਥਾਣਾ ${esc(b.police)}</span>` : ""}
+      <span class="chip"><a href="https://www.google.com/maps?q=${la},${lo}" target="_blank" rel="noopener">Open in Google Maps ↗</a></span></div>
+    ${mates.length ? `<div class="tabs">${area.properties.parts.map(p => `<button class="btn small" data-go="${p}" aria-pressed="${p === b.part}">Booth ${p}</button>`).join("")}</div><p class="note inline">These booths share one building, so they share one area on the map.</p>` : ""}
+    ${S.editing ? editBlock(b, spotsHere) : ""}
+    <section class="blk"><h2><span>Voters, 2026 final roll</span><span class="num">${b.deleted ? fmt(b.deleted) + " deleted" : ""}</span></h2>
+      <div class="kpis">
+        <div class="kpi"><div class="v">${fmt(b.total)}</div><div class="l">voters</div></div>
+        <div class="kpi"><div class="v">${sr ? fmt(sr) : "–"}</div><div class="l">women per 1,000 men</div></div>
+        <div class="kpi"><div class="v">${(young * 100).toFixed(0)}%</div><div class="l">aged 18–29</div></div>
+        <div class="kpi"><div class="v">${fmt(b.added)}</div><div class="l">added after draft roll</div></div>
+      </div>
+      <div class="genderbar" aria-hidden="true"><span style="flex:${b.male || 1};background:var(--ink-2)"></span><span style="flex:${b.female || 1};background:var(--seq-4)"></span>${b.third ? `<span style="flex:${b.third};background:var(--sel)"></span>` : ""}</div>
+      <div class="legendrow"><span><span class="sw" style="background:var(--ink-2)"></span>Men ${fmt(b.male)}</span><span><span class="sw" style="background:var(--seq-4)"></span>Women ${fmt(b.female)}</span>${b.third ? `<span><span class="sw" style="background:var(--sel)"></span>Third gender ${fmt(b.third)}</span>` : ""}</div>
+      <div style="margin-top:12px">${pyramid(ages)}</div>
+      <p class="note">Ages are read from every entry on the roll${b.deleted ? ", including the " + b.deleted + " marked for deletion" : ""}; totals come from the roll's cover page.</p>
+    </section>
+    ${secs.length || unkSec ? `<section class="blk"><h2><span>${b.urban ? "Streets & mohallas" : "Sections of this booth"}</span><span>${secs.length}</span></h2>
+      <div class="scroll-x"><table class="t"><thead><tr><th>Section</th><th class="r">Voters</th><th class="r">Women</th><th class="r">18–29</th><th class="r">60+</th>${S.editing ? "<th></th>" : ""}</tr></thead><tbody>
+      ${secs.map(s => `<tr><td><span class="pa">${s.no}. ${esc(s.name)}</span>${s.roman ? `<br><span class="note">${esc(s.roman)}</span>` : ""}${S.spots[b.part + "-" + s.no] ? ` <span class="chip good">pinned</span>` : ""}</td><td class="r">${fmt(s.n)}</td><td class="r">${pct(s.f, s.n, 0)}%</td><td class="r">${pct(s.young, s.n, 0)}%</td><td class="r">${pct(s.old, s.n, 0)}%</td>${S.editing ? `<td><button class="btn small" data-spot="${s.no}">Pin</button></td>` : ""}</tr>`).join("")}
+      ${unkSec ? `<tr><td class="note">Section heading not read</td><td class="r">${fmt(unkSec.n)}</td><td class="r">${pct(unkSec.f, unkSec.n, 0)}%</td><td class="r">${pct(unkSec.young, unkSec.n, 0)}%</td><td class="r">${pct(unkSec.old, unkSec.n, 0)}%</td>${S.editing ? "<td></td>" : ""}</tr>` : ""}
+      ${newSec ? `<tr><td class="note">New voters (section not printed)</td><td class="r">${fmt(newSec.n)}</td><td class="r">${pct(newSec.f, newSec.n, 0)}%</td><td class="r">${pct(newSec.young, newSec.n, 0)}%</td><td class="r">${pct(newSec.old, newSec.n, 0)}%</td>${S.editing ? "<td></td>" : ""}</tr>` : ""}
+      </tbody></table></div>
+      ${b.urban && !S.editing ? `<p class="note inline">Street names come from the roll. Turn on <b>Correct the map</b> to pin each one where it is.</p>` : ""}
+    </section>` : ""}
+    <section class="blk"><h2><span>Past results for this area</span><span class="chip ${u && u.confidence === "direct" ? "good" : "warn"}">${u ? (u.confidence === "direct" ? "Direct match" : u.confidence === "town" ? "Town zone" : "Inferred match") : "Not linked"}</span></h2>
+      <div class="resgrid">${u ? resultBlock(u.r22, 2022, CAND22) + resultBlock(u.r17, 2017, CAND17) : ""}</div>
+      <p class="note inline">${unitNote(u, b)}</p>
+    </section>
+    <section class="blk"><h2><span>From the official roll</span></h2>
+      <div class="figs">
+        <figure class="figure" style="margin:0"><img loading="lazy" src="${b.img_cover}" alt="Cover page extract of the roll for part ${b.part}: sections, polling station and voter totals"><figcaption>Cover page: sections, polling station address and totals</figcaption></figure>
+        <figure class="figure" style="margin:0"><img loading="lazy" src="${b.img_map}" alt="Official map view, building photo and key map for part ${b.part}"><figcaption>Page 2: ECI's map view of the polling area, the building, and the key map</figcaption></figure>
+      </div>
+    </section>`;
+  bindPanel(b);
+}
+function bindPanel(b) {
+  $("#back")?.addEventListener("click", () => { S.sel = null; S.booths.forEach(x => x._m && x._m.setStyle(boothStyle(x.part))); S.areaLayer.setStyle(areaStyle); try { history.replaceState(null, "", "#"); } catch (e) {} renderPanel(); });
+  $("#panel").querySelectorAll("[data-go]").forEach(x => x.addEventListener("click", () => select(+x.dataset.go, false)));
+  $("#panel").querySelectorAll("[data-spot]").forEach(x => x.addEventListener("click", () => startPlacing({ type: "spot", part: b.part, sec: +x.dataset.spot, name: (b.sections.find(s => s.no === +x.dataset.spot) || {}).name })));
+  $("#panel").querySelectorAll(".figure img").forEach(img => img.addEventListener("click", () => openLightbox(img.src, img.alt)));
+  $("#panel").querySelectorAll(".pyr rect").forEach(r => { r.addEventListener("mouseover", e => showTip(e, esc(r.dataset.tip))); r.addEventListener("mousemove", moveTip); r.addEventListener("mouseout", hideTip); });
+  $("#movePin")?.addEventListener("click", () => startPlacing({ type: "pin", part: b.part, parts: buildingMates(b) }));
+  $("#undoPin")?.addEventListener("click", () => buildingMates(b).forEach(removePin));
+  $("#panel").querySelectorAll("[data-unspot]").forEach(x => x.addEventListener("click", () => removeSpot(x.dataset.unspot)));
+}
+function renderOverview() {
+  const bs = S.booths;
+  const tot = bs.reduce((s, b) => s + (b.total || 0), 0), m = bs.reduce((s, b) => s + (b.male || 0), 0), f = bs.reduce((s, b) => s + (b.female || 0), 0), t = bs.reduce((s, b) => s + (b.third || 0), 0);
+  const added = bs.reduce((s, b) => s + (b.added || 0), 0);
+  const ages = BANDS.map((_, i) => [0, 1, 2].map(g => bs.reduce((s, b) => s + b.ages[i][g], 0)));
+  const known = ages.reduce((s, a) => s + a[0] + a[1] + a[2], 0);
+  const units = Object.values(S.units);
+  const sum = (yr) => { const out = { votes: {}, valid: 0, nota: 0, total: 0 }; units.forEach(u => { const r = u[yr]; if (!r) return; Object.entries(r.votes).forEach(([k, v]) => out.votes[k] = (out.votes[k] || 0) + v); out.valid += r.valid; out.nota += r.nota; out.total += r.total; }); return out; };
+  const r22 = sum("r22"), r17 = sum("r17");
+  const close = units.filter(u => u.r22 && !u.zone).map(u => ({ u, w: winner(u.r22) })).sort((a, b) => a.w.margin - b.w.margin).slice(0, 8);
+  const swing = units.filter(u => u.r22 && u.r17 && !u.zone).map(u => ({ u, d: share(u.r22, ["INC"]) - share(u.r17, ["INC"]) })).sort((a, b) => a.d - b.d).slice(0, 6);
+  const nApprox = bs.filter(b => ["town-approx", "approx", "village"].includes(locKind(b))).length;
+  $("#panel").innerHTML = `
+    <div class="eyebrow">Assembly constituency 55 · District Fatehgarh Sahib</div>
+    <div class="ptitle">Fatehgarh Sahib</div>
+    <p class="note">Click any area or booth on the map. Colours show the measure chosen above.</p>
+    <section class="blk"><h2><span>Voters, SIR final roll (12 Oct 2026)</span><span class="num">${bs.length < 214 ? bs.length + " of 214 booths read" : "214 booths"}</span></h2>
+      <div class="kpis two">
+        <div class="kpi"><div class="v">${fmt(tot)}</div><div class="l">voters</div></div>
+        <div class="kpi"><div class="v">${m ? fmt(Math.round(1000 * f / m)) : "–"}</div><div class="l">women per 1,000 men</div></div>
+        <div class="kpi"><div class="v">${known ? ((ages[0][0] + ages[0][1] + ages[0][2] + ages[1][0] + ages[1][1] + ages[1][2]) / known * 100).toFixed(0) : "–"}%</div><div class="l">aged 18–29</div></div>
+        <div class="kpi"><div class="v">${fmt(added)}</div><div class="l">added after draft roll</div></div>
+      </div>
+      <div class="legendrow" style="margin-top:10px"><span><span class="sw" style="background:var(--ink-2)"></span>Men ${fmt(m)}</span><span><span class="sw" style="background:var(--seq-4)"></span>Women ${fmt(f)}</span><span>Third gender ${fmt(t)}</span></div>
+      <div style="margin-top:12px">${pyramid(ages)}</div>
+    </section>
+    <section class="blk"><h2><span>Constituency result at polling stations</span></h2><div class="resgrid">${resultBlock(r22, 2022, CAND22, "Excludes postal ballots.")}${resultBlock(r17, 2017, CAND17, "Excludes postal ballots.")}</div></section>
+    <section class="blk"><h2><span>Closest areas in 2022</span><span>lead</span></h2>
+      ${close.map(({ u, w }) => `<button class="listbtn" data-go="${u.parts[0]}"><span class="n">${u.parts.join(", ")}</span><span>${esc(S.by[u.parts[0]]?.name_en || "")} <span class="note">· ${w.p} over ${w.second[0]}</span></span><span class="m">${(w.margin * 100).toFixed(1)} pts</span></button>`).join("")}
+    </section>
+    <section class="blk"><h2><span>Biggest INC losses, 2017 → 2022</span><span>change</span></h2>
+      ${swing.map(({ u, d }) => `<button class="listbtn" data-go="${u.parts[0]}"><span class="n">${u.parts.join(", ")}</span><span>${esc(S.by[u.parts[0]]?.name_en || "")}</span><span class="m">${(d * 100).toFixed(0)} pts</span></button>`).join("")}
+    </section>
+    <section class="blk"><h2><span>How this map was made</span></h2>
+      <p class="note">Booth points: ECI's own GPS points for the 2017 polling stations, matched to today's 214 parts by name. ${nApprox} booths, mostly inside Sirhind town where every 2017 booth was just named "Sirhind", are placed approximately and drawn as hollow dots; please correct them.</p>
+      <p class="note">Booth areas: each 25 m patch of the constituency is given to its nearest booth location (a Voronoi split), so lines between villages are approximate. Booths in the same building share one area.</p>
+      <p class="note">Results: Form 20 for 2017 and 2022. 2022 booths were linked to 2017 booths by order and vote pattern; inside Sirhind town results are shown for two zones.</p>
+    </section>`;
+  $("#panel").querySelectorAll("[data-go]").forEach(x => x.addEventListener("click", () => select(+x.dataset.go)));
+  $("#panel").querySelectorAll(".pyr rect").forEach(r => { r.addEventListener("mouseover", e => showTip(e, esc(r.dataset.tip))); r.addEventListener("mousemove", moveTip); r.addEventListener("mouseout", hideTip); });
+}
+function openLightbox(src, alt) {
+  const d = document.createElement("div"); d.className = "lightbox"; d.tabIndex = 0;
+  d.innerHTML = `<img src="${src}" alt="${esc(alt)}">`; d.addEventListener("click", () => d.remove()); d.addEventListener("keydown", e => { if (e.key === "Escape") d.remove(); });
+  document.body.appendChild(d); d.focus();
+}
+
+/* ---------------------------------------------------------------- search */
+const q = $("#q"), hits = $("#hits");
+q.addEventListener("input", () => {
+  const v = q.value.trim().toLowerCase();
+  if (!v) { hits.hidden = true; return; }
+  const res = S.booths.filter(b => String(b.part) === v || (b.name_en || "").toLowerCase().includes(v) || (b.ps_name || "").includes(q.value.trim()) || (b.village || "").includes(q.value.trim()) || b.sections.some(s => (s.roman || "").toLowerCase().includes(v) || (s.name || "").includes(q.value.trim()))).slice(0, 8);
+  hits.innerHTML = res.length ? res.map(b => `<button data-go="${b.part}"><b>${b.part}</b><span>${esc(b.name_en)} <span class="pa note">${esc(b.ps_name)}</span></span></button>`).join("") : `<div class="note" style="padding:8px 10px">No booth matches “${esc(q.value)}”.</div>`;
+  hits.hidden = false;
+});
+hits.addEventListener("click", e => { const t = e.target.closest("[data-go]"); if (!t) return; hits.hidden = true; q.value = ""; select(+t.dataset.go); });
+q.addEventListener("keydown", e => { if (e.key === "Enter") { const t = hits.querySelector("[data-go]"); if (t) t.click(); } if (e.key === "Escape") hits.hidden = true; });
+
+/* ---------------------------------------------------------------- team corrections (shared store) */
+async function connectStore() {
+  if (!window.claude || !window.claude.use) { S.direct = true; S.kmlOk = true; const kb = $("#kmlBtn"); if (kb) kb.hidden = false; return; }
+  try {
+    const [db, user, dl] = await Promise.all([claude.use("db"), claude.use("user"), claude.use("downloads")]);
+    S.downloads = dl; if (dl) { S.kmlOk = true; const kb = $("#kmlBtn"); if (kb) kb.hidden = false; }
+    if (!db) return;
+    S.db = db; S.user = user;
+    S.canWrite = user ? await user.can("data.write") : null;
+    if (S.canWrite !== false) $("#editBtn").hidden = false;
+    db.collection("pins").onSnapshot(snap => { S.pins = {}; snap.docs.forEach(d => { const x = d.data(); if (x && x.lat) S.pins[+d.id] = x; }); moveBoothMarkers(); if (S.sel) renderPanel(); }, () => {});
+    db.collection("spots").onSnapshot(snap => { S.spots = {}; snap.docs.forEach(d => { const x = d.data(); if (x && x.lat) S.spots[d.id] = x; }); drawSpots(); if (S.sel) renderPanel(); }, () => {});
+    db.collection("places").onSnapshot(snap => { drawTeamPlaces(snap.docs.map(d => ({ id: d.id, ...d.data() }))); }, () => {});
+  } catch (e) { /* the map works without the shared store */ }
+}
+$("#editBtn").addEventListener("click", () => { S.editing = !S.editing; $("#editBtn").setAttribute("aria-pressed", String(S.editing)); drawEditBar(); renderPanel(); });
+function drawEditBar(msg) {
+  const bar = $("#editbar");
+  if (!S.editing) { bar.hidden = true; return; }
+  bar.hidden = false;
+  bar.innerHTML = S.placing ? `<span>${esc(msg || "Click the map to place it")}</span><button class="btn small" id="cancelPlace">Cancel</button>`
+    : `<span>Correcting the map. Select a booth to move its pin or pin its streets.</span><select id="newCat" aria-label="Kind of place to add">
+        <option value="worship|Gurdwara">Gurdwara</option><option value="worship|Mandir">Mandir</option><option value="worship|Masjid / Dargah">Masjid / Dargah</option><option value="worship|Church">Church</option>
+        <option value="education|School">School</option><option value="education|College / university">College</option><option value="health|Health centre / sub-centre">PHC / sub-centre</option><option value="health|Hospital / nursing home">Hospital</option>
+        <option value="water|Sewage treatment plant">Sewage treatment plant</option><option value="water|Water supply">Water works / tank</option><option value="civic|Government / civic">Government office</option><option value="civic|Market / grain mandi">Mandi / market</option><option value="heritage|Heritage site">Heritage / cultural</option></select>
+        <input id="newName" placeholder="Name" style="width:150px" aria-label="Name of the place">
+        <button class="btn small" id="addPlace">Add place</button>`;
+  $("#cancelPlace")?.addEventListener("click", () => { S.placing = null; drawEditBar(); S.map.getContainer().style.cursor = ""; });
+  $("#addPlace")?.addEventListener("click", () => { const [cat, kind] = $("#newCat").value.split("|"); const name = $("#newName").value.trim() || kind; startPlacing({ type: "place", cat, kind, name }); });
+}
+function editBlock(b, spotsHere) {
+  const pinned = !!S.pins[b.part];
+  return `<section class="blk"><h2><span>Correct this booth</span></h2>
+    <div class="tabs"><button class="btn small" id="movePin">${buildingMates(b).length > 1 ? "Move the building's pin (all its booths)" : "Move pin to the building"}</button>${pinned ? `<button class="btn small" id="undoPin">Undo pin correction</button>` : ""}</div>
+    ${spotsHere.length ? `<p class="note inline">Pinned streets: ${spotsHere.map(s => `<span class="pa">${esc(s.name)}</span> <button class="btn small" data-unspot="${b.part}-${s.sec}">remove</button>`).join(" ")}</p>` : ""}
+    <p class="note inline">Use <b>Pin</b> beside each street below to mark where it is.</p></section>`;
+}
+function buildingMates(b) { const f = S.areas.features.find(f => f.properties.parts.includes(b.part)); return f ? f.properties.parts.slice() : [b.part]; }
+function startPlacing(p) { S.placing = p; S.map.getContainer().style.cursor = "crosshair"; const what = p.type === "pin" ? (p.parts && p.parts.length > 1 ? `the building of booths ${p.parts.join(", ")}` : `booth ${p.part}'s building`) : p.type === "spot" ? `“${p.name}”` : `${p.name}`; drawEditBar(`Click the map where ${what} is`); }
+async function finishPlacing(latlng) {
+  const p = S.placing; S.placing = null; S.map.getContainer().style.cursor = ""; drawEditBar();
+  if (!S.db) return;
+  const who = S.user ? await S.user.id() : null;
+  const at = new Date().toISOString(), lat = +latlng.lat.toFixed(6), lon = +latlng.lng.toFixed(6);
+  try {
+    if (p.type === "pin") for (const n of (p.parts || [p.part])) await S.db.doc("pins/" + n).set({ lat, lon, by: who, at });
+    if (p.type === "spot") await S.db.doc("spots/" + p.part + "-" + p.sec).set({ part: p.part, sec: p.sec, name: p.name || "", lat, lon, by: who, at });
+    if (p.type === "place") await S.db.collection("places").add({ cat: p.cat, kind: p.kind, name: p.name, lat, lon, by: who, at });
+  } catch (e) { drawEditBar(); $("#editbar").insertAdjacentHTML("beforeend", `<span>Could not save: ${esc(e.code || e.message)}. You may need edit access to this page.</span>`); }
+}
+async function removePin(part) { try { await S.db.doc("pins/" + part).delete(); } catch (e) {} }
+async function removeSpot(id) { try { await S.db.doc("spots/" + id).delete(); } catch (e) {} }
+function confirmRemovePlace(id, p) {
+  drawEditBar(); const bar = $("#editbar");
+  bar.innerHTML = `<span>Remove “${esc(p.name)}” from the map?</span><button class="btn small" id="yesRm">Remove</button><button class="btn small" id="noRm">Keep</button>`;
+  $("#yesRm").addEventListener("click", async () => { try { await S.db.doc("places/" + id).delete(); } catch (e) {} drawEditBar(); });
+  $("#noRm").addEventListener("click", () => drawEditBar());
+}
+function drawSpots() {
+  S.spotLayer.clearLayers();
+  Object.values(S.spots).forEach(s => L.marker([s.lat, s.lon], { pane: "poi", interactive: false, icon: L.divIcon({ className: "", iconSize: [0, 0], html: `<div class="spot">${esc(s.name)} <span class="num">·${s.part}</span></div>` }) }).addTo(S.spotLayer));
+}
+function drawTeamPlaces(list) {
+  (S.teamMarkers || []).forEach(m => m.remove());
+  S.teamMarkers = list.filter(p => POI[p.cat] && p.lat).map(p => addPlaceMarker(p, true, p.id));
+  const counts = {}; S.places.concat(list).forEach(p => counts[p.cat] = (counts[p.cat] || 0) + 1);
+  Object.keys(POI).forEach(k => { const el = $("#cnt-" + k); if (el) el.textContent = counts[k] || 0; });
+}
+
+/* ---------------------------------------------------------------- Google Earth export */
+document.addEventListener("click", e => { if (e.target && e.target.id === "kmlBtn") saveKml(); });
+async function saveKml() {
+  if (!S.downloads && !S.direct) return;
+  const x = s => String(s ?? "").replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+  const kcol = h => { const p = hex(h) || [128, 128, 128]; return "a6" + p.slice().reverse().map(v => v.toString(16).padStart(2, "0")).join(""); };
+  let k = `<?xml version="1.0" encoding="UTF-8"?><kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>AC 55 Fatehgarh Sahib booths</name>`;
+  k += `<Folder><name>Booth areas (2022 leader)</name>`;
+  S.areas.features.forEach(f => { const bs = areaParts(f); if (!bs.length) return; const u = unitOf(bs[0]); const w = u && u.r22 ? winner(u.r22) : null;
+    k += `<Placemark><name>${x(bs.map(b => b.part).join(", "))} ${x(bs[0].name_en)}</name><description>${x(bs.map(b => `Booth ${b.part}: ${fmt(b.total)} voters`).join("; "))}${w ? x(` · 2022: ${w.p} +${(w.margin * 100).toFixed(1)} pts`) : ""}</description><Style><PolyStyle><color>${kcol(w ? leadMix(w.p, w.margin) : "#8d9099")}</color></PolyStyle><LineStyle><color>ffffffff</color><width>1</width></LineStyle></Style><MultiGeometry>`;
+    f.geometry.coordinates.forEach(poly => { k += `<Polygon><outerBoundaryIs><LinearRing><coordinates>${poly[0].map(p => p[0] + "," + p[1]).join(" ")}</coordinates></LinearRing></outerBoundaryIs></Polygon>`; });
+    k += `</MultiGeometry></Placemark>`; });
+  k += `</Folder><Folder><name>Polling stations</name>`;
+  S.booths.forEach(b => { const [la, lo] = pos(b); k += `<Placemark><name>${b.part} ${x(b.name_en)}</name><description>${x(`${b.ps_name} — ${b.address} — ${fmt(b.total)} voters (${fmt(b.male)} men, ${fmt(b.female)} women). Location: ${(LOC[locKind(b)] || [])[1] || ""}`)}</description><Point><coordinates>${lo},${la}</coordinates></Point></Placemark>`; });
+  k += `</Folder><Folder><name>Places of significance</name>`;
+  S.places.forEach(p => { k += `<Placemark><name>${x(p.name)}</name><description>${x(p.kind)}</description><Point><coordinates>${p.lon},${p.lat}</coordinates></Point></Placemark>`; });
+  k += `</Folder></Document></kml>`;
+  if (S.direct) {
+    const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([k], { type: "application/vnd.google-earth.kml+xml" }));
+    a.download = "AC55_Fatehgarh_Sahib_booths.kml"; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 2000);
+    toast("Downloaded. Open it in Google Earth Pro (File → Open)."); return;
+  }
+  try { const r = await S.downloads.save({ filename: "AC55_Fatehgarh_Sahib_booths.kml", data: new Blob([k], { type: "application/vnd.google-earth.kml+xml" }) }); if (r === "saved" || (r && r.status === "saved")) toast("Saved. Open it in Google Earth Pro (File → Open)."); }
+  catch (e) {
+    const c = e && e.code;
+    if (c === "declined") return;
+    toast(c === "rejected_extension" || c === "extension_not_enabled" ? "This viewer can't save .kml files. Ask the person who shared this map for the Google Earth file." : "Could not save the file" + (c ? ` (${c})` : "") + ".");
+  }
+}
+
+/* first-visit guide */
+const GUIDE_KEY = "atlas.guide.hidden.v1";
+function openGuide(fromButton) {
+  const g = $("#guide"); g.hidden = false; S.guideReturn = fromButton ? $("#helpBtn") : null;
+  try { $("#guideHide").checked = localStorage.getItem(GUIDE_KEY) === "1"; } catch (e) {}
+  setTimeout(() => $("#guideClose").focus(), 0);
+}
+function closeGuide() {
+  const g = $("#guide"); if (g.hidden) return; g.hidden = true;
+  try { $("#guideHide").checked ? localStorage.setItem(GUIDE_KEY, "1") : localStorage.removeItem(GUIDE_KEY); } catch (e) {}
+  if (S.guideReturn) S.guideReturn.focus();
+}
+$("#helpBtn").addEventListener("click", () => openGuide(true));
+$("#guideClose").addEventListener("click", closeGuide);
+$("#guide").addEventListener("click", e => { if (e.target.id === "guide") closeGuide(); });
+document.addEventListener("keydown", e => {
+  if ($("#guide").hidden) return;
+  if (e.key === "Escape") closeGuide();
+  if (e.key === "Tab") { const f = [...$("#guide").querySelectorAll("input,button")]; const i = f.indexOf(document.activeElement); if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); } else if (!e.shiftKey && i === f.length - 1) { e.preventDefault(); f[0].focus(); } }
+});
+(function () { let hide = false; try { hide = localStorage.getItem(GUIDE_KEY) === "1"; } catch (e) {} if (!hide) openGuide(false); })();
+
+function toast(msg) { const t = $("#toast"); t.textContent = msg; t.hidden = false; clearTimeout(toast._t); toast._t = setTimeout(() => t.hidden = true, 6000); }
+/* theme changes: re-read tokens and repaint the canvas layers */
+try { matchMedia("(prefers-color-scheme: dark)").addEventListener("change", restyle); } catch (e) {}
+new MutationObserver(restyle).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
+if (window.L) boot(); else window.addEventListener("leaflet-ready", boot, { once: true });
+})();
+</script>
+</body></html>
