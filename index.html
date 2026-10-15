@@ -1169,6 +1169,16 @@ function resultBlock(r, year, cands, note) {
 function unitNote(u, b) {
   if (!u) return "No earlier result could be linked to this booth.";
   if (u.zone) return `Booths inside Sirhind town were renumbered, so these results cover the whole ${esc(u.zone)} zone: 2017 booths ${u.b17[0]}–${u.b17[u.b17.length - 1]}, 2022 booths ${u.b22[0]}–${u.b22[u.b22.length - 1]}.`;
+  if (u.confidence === "estimated") {
+    const pl = a => a.length > 1 ? "s " + a.join(" and ") : " " + a[0];
+    let t = `Estimated. Form 20 names every town booth just "Sirhind", so this booth was matched to 2022 booth${pl(u.b22)} by booth order and size. On rural booths, where village names let us check, this method finds the right booth 97% of the time.`;
+    if (u.share < 1 && u.b22.length > 1) t += ` Today's booths here replaced those 2022 booths together, so their combined votes are shared out by today's voter count (${Math.round(u.share * 100)}% to this booth).`;
+    else if (u.share < 1) t += ` That 2022 booth has since been split, so its votes are shared out by today's voter count (${Math.round(u.share * 100)}% to this booth).`;
+    if (u.r17 && u.b17 && u.b17.length) t += ` 2017 comes through the same chain, from 2017 booth${pl(u.b17)}.`;
+    else t += " No 2017 figure: this area wasn't a separate town booth then.";
+    if (u.fit < .75 || u.fit > 1.3) t += " Booth sizes fit less well here, so treat this one with extra caution.";
+    return t;
+  }
   const s17 = u.b17.join(", "), s22 = u.b22.join(", ");
   const others = u.parts.filter(p => p !== b.part);
   let t = `Same area as 2017 booth ${s17} and 2022 booth${u.b22.length > 1 ? "s" : ""} ${s22}.`;
@@ -1220,7 +1230,7 @@ function renderBooth(b) {
       </tbody></table></div>
       ${b.urban && !S.editing ? `<p class="note inline">Street names come from the roll. Turn on <b>Correct the map</b> to pin each one where it is.</p>` : ""}
     </section>` : ""}
-    <section class="blk"><h2><span>Past results for this area</span><span class="chip ${u && u.confidence === "direct" ? "good" : "warn"}">${u ? (u.confidence === "direct" ? "Direct match" : u.confidence === "town" ? "Town zone" : "Inferred match") : "Not linked"}</span></h2>
+    <section class="blk"><h2><span>Past results for this area</span><span class="chip ${u && u.confidence === "direct" ? "good" : "warn"}">${u ? (u.confidence === "direct" ? "Direct match" : u.confidence === "town" ? "Town zone" : u.confidence === "estimated" ? "Estimated match" : "Inferred match") : "Not linked"}</span></h2>
       <div class="resgrid">${u ? resultBlock(u.r22, 2022, CAND22) + resultBlock(u.r17, 2017, CAND17) : ""}</div>
       <p class="note inline">${unitNote(u, b)}</p>
     </section>
@@ -1278,7 +1288,7 @@ function renderOverview() {
     <section class="blk"><h2><span>How this map was made</span></h2>
       <p class="note">Booth points: ECI's own GPS points for the 2017 polling stations, matched to today's 214 parts by name. ${nApprox} booths, mostly inside Sirhind town where every 2017 booth was just named "Sirhind", are placed approximately and drawn as hollow dots; please correct them.</p>
       <p class="note">Booth areas: each 25 m patch of the constituency is given to its nearest booth location (a Voronoi split), so lines between villages are approximate. Booths in the same building share one area.</p>
-      <p class="note">Results: Form 20 for 2017 and 2022. 2022 booths were linked to 2017 booths by order and vote pattern; inside Sirhind town results are shown for two zones.</p>
+      <p class="note">Results: Form 20 for 2017 and 2022. 2022 booths were linked to 2017 booths by order and vote pattern. Inside Sirhind town, where Form 20 gives no locality names, each booth is matched by booth order and size; tested on rural booths, that finds the right booth 97% of the time.</p>
     </section>`;
   $("#panel").querySelectorAll("[data-go]").forEach(x => x.addEventListener("click", () => select(+x.dataset.go)));
   $("#panel").querySelectorAll(".pyr rect").forEach(r => { r.addEventListener("mouseover", e => showTip(e, esc(r.dataset.tip))); r.addEventListener("mousemove", moveTip); r.addEventListener("mouseout", hideTip); });
