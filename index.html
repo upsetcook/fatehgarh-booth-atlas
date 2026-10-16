@@ -800,6 +800,9 @@ table.t td.r, table.t th.r { text-align: right; font-variant-numeric: tabular-nu
           <option value="young">Aged 18–29</option>
           <option value="old">Aged 60+</option>
           <option value="added">New voters added</option>
+          <option value="first" data-fam>First-time voters (18–19)</option>
+          <option value="aged80" data-fam>Aged 80+ (home voting)</option>
+          <option value="famsize" data-fam>Average family size</option>
         </optgroup>
       </select></div>
     <button class="btn" id="helpBtn" aria-haspopup="dialog" title="How to use this map">Help</button>
@@ -891,6 +894,7 @@ function boot() {
   Promise.all(["data/booths.json", "data/units.json", "data/areas.geojson", "data/places.json", "data/basemap.json", "data/ac55.geojson"].map(u => fetch(u).then(r => { if (!r.ok) throw new Error(u + " " + r.status); return r.json(); })))
     .then(([booths, units, areas, places, base, ac]) => {
       S.booths = booths; booths.forEach(b => S.by[b.part] = b);
+      if (!booths.some(b => b.fam)) document.querySelectorAll("#mode [data-fam]").forEach(o => o.remove());
       units.forEach(u => S.units[u.id] = u);
       S.areas = areas; S.places = places; S.base = base; S.ac = ac;
       buildBase(); buildAreas(); buildBooths(); buildPlaces(); buildLayersMenu(); restyle();
@@ -973,6 +977,12 @@ function metric(bs) {
     case "young": return known ? (ages[0] + ages[1]) / known : null;
     case "old": return known ? (ages[5] + ages[6] + ages[7]) / known : null;
     case "added": { const t = sum("total"); return t ? sum("added") / t : null; }
+    case "first": case "aged80": case "famsize": {
+      const fb = bs.filter(b => b.fam); if (!fb.length) return null;
+      const read = fb.reduce((s, b) => s + b.fam.read, 0); if (!read) return null;
+      if (S.mode === "famsize") return read / fb.reduce((s, b) => s + b.fam.families, 0);
+      return fb.reduce((s, b) => s + b.fam[S.mode === "first" ? "first_time" : "aged80"], 0) / read;
+    }
   }
 }
 const SEQ = () => [C["fill-0"], C["fill-1"], C["fill-2"], C["fill-3"], C["fill-4"], C["fill-5"]];
@@ -990,6 +1000,9 @@ const SCALES = {
   young: { lo: .14, hi: .30, f: v => (v * 100).toFixed(0) + "%", t: "Voters aged 18–29" },
   old: { lo: .12, hi: .30, f: v => (v * 100).toFixed(0) + "%", t: "Voters aged 60+" },
   added: { lo: 0, hi: .08, f: v => (v * 100).toFixed(1) + "%", t: "New voters added in the claims period, per 100 voters" },
+  first: { lo: .005, hi: .03, f: v => (v * 100).toFixed(1) + "%", t: "First-time voters (aged 18–19), per 100 voters" },
+  aged80: { lo: .01, hi: .035, f: v => (v * 100).toFixed(1) + "%", t: "Voters aged 80+ (can vote from home), per 100 voters" },
+  famsize: { lo: 2, hi: 4.5, f: v => v.toFixed(1), t: "Voters per family on the roll" },
   inc_sw: { lo: -.45, hi: .05, f: v => (v > 0 ? "+" : "") + (v * 100).toFixed(0) + " pts", t: "INC share change, 2017 → 2022" }
 };
 function colorFor(v) {
@@ -1222,6 +1235,15 @@ function renderBooth(b) {
       <div style="margin-top:12px">${pyramid(ages)}</div>
       <p class="note">Ages are read from every entry on the roll${b.deleted ? ", including the " + b.deleted + " marked for deletion" : ""}; totals come from the roll's cover page.</p>
     </section>
+    ${b.fam ? `<section class="blk"><h2><span>Families on the roll</span></h2>
+      <div class="kpis">
+        <div class="kpi"><div class="v">${fmt(b.fam.families)}</div><div class="l">families</div></div>
+        <div class="kpi"><div class="v">${b.fam.fam_size.toFixed(1)}</div><div class="l">voters per family</div></div>
+        <div class="kpi"><div class="v">${fmt(b.fam.first_time)}</div><div class="l">first-time voters, 18–19</div></div>
+        <div class="kpi"><div class="v">${fmt(b.fam.aged80)}</div><div class="l">aged 80+, can vote from home</div></div>
+      </div>
+      <p class="note">Families are grouped from the roll itself: a wife or child is joined to the entry they name as husband, father or mother, brothers and sisters who name the same father are joined, and people listed at different house numbers are kept apart. Treat it as a close estimate, not a census: an OCR slip in a name can split one family in two.</p>
+    </section>` : ""}
     ${secs.length || unkSec ? `<section class="blk"><h2><span>${b.urban ? "Streets & mohallas" : "Sections of this booth"}</span><span>${secs.length}</span></h2>
       <div class="scroll-x"><table class="t"><thead><tr><th>Section</th><th class="r">Voters</th><th class="r">Women</th><th class="r">18–29</th><th class="r">60+</th>${S.editing ? "<th></th>" : ""}</tr></thead><tbody>
       ${secs.map(s => `<tr><td><span class="pa">${s.no}. ${esc(s.name)}</span>${s.roman ? `<br><span class="note">${esc(s.roman)}</span>` : ""}${S.spots[b.part + "-" + s.no] ? ` <span class="chip good">pinned</span>` : ""}</td><td class="r">${fmt(s.n)}</td><td class="r">${pct(s.f, s.n, 0)}%</td><td class="r">${pct(s.young, s.n, 0)}%</td><td class="r">${pct(s.old, s.n, 0)}%</td>${S.editing ? `<td><button class="btn small" data-spot="${s.no}">Pin</button></td>` : ""}</tr>`).join("")}
@@ -1264,6 +1286,8 @@ function renderOverview() {
   const close = units.filter(u => u.r22 && !u.zone).map(u => ({ u, w: winner(u.r22) })).sort((a, b) => a.w.margin - b.w.margin).slice(0, 8);
   const swing = units.filter(u => u.r22 && u.r17 && !u.zone).map(u => ({ u, d: share(u.r22, ["INC"]) - share(u.r17, ["INC"]) })).sort((a, b) => a.d - b.d).slice(0, 6);
   const nApprox = bs.filter(b => ["town-approx", "approx", "village"].includes(locKind(b))).length;
+  const famB = bs.filter(b => b.fam);
+  const fam = ["families", "read", "first_time", "aged80"].reduce((o, k) => (o[k] = famB.reduce((s, b) => s + (b.fam[k] || 0), 0), o), {});
   $("#panel").innerHTML = `
     <div class="eyebrow">Assembly constituency 55 · District Fatehgarh Sahib</div>
     <div class="ptitle">Fatehgarh Sahib</div>
@@ -1278,6 +1302,15 @@ function renderOverview() {
       <div class="legendrow" style="margin-top:10px"><span><span class="sw" style="background:var(--ink-2)"></span>Men ${fmt(m)}</span><span><span class="sw" style="background:var(--seq-4)"></span>Women ${fmt(f)}</span><span>Third gender ${fmt(t)}</span></div>
       <div style="margin-top:12px">${pyramid(ages)}</div>
     </section>
+    ${famB.length ? `<section class="blk"><h2><span>Families on the roll</span><span class="num">${famB.length < bs.length ? famB.length + " of " + bs.length + " booths" : "all booths"}</span></h2>
+      <div class="kpis two">
+        <div class="kpi"><div class="v">${fmt(fam.families)}</div><div class="l">families</div></div>
+        <div class="kpi"><div class="v">${(fam.read / Math.max(1, fam.families)).toFixed(1)}</div><div class="l">voters per family</div></div>
+        <div class="kpi"><div class="v">${fmt(fam.first_time)}</div><div class="l">first-time voters, 18–19</div></div>
+        <div class="kpi"><div class="v">${fmt(fam.aged80)}</div><div class="l">aged 80+, can vote from home</div></div>
+      </div>
+      <p class="note">Grouped from kinship on the roll (husband, father, mother, and siblings who name the same father), never across different house numbers. Pick these measures in the colour menu above to see them booth by booth.</p>
+    </section>` : ""}
     <section class="blk"><h2><span>Constituency result at polling stations</span></h2><div class="resgrid">${resultBlock(r22, 2022, CAND22, "Excludes postal ballots.")}${resultBlock(r17, 2017, CAND17, "Excludes postal ballots.")}</div></section>
     <section class="blk"><h2><span>Closest areas in 2022</span><span>lead</span></h2>
       ${close.map(({ u, w }) => `<button class="listbtn" data-go="${u.parts[0]}"><span class="n">${u.parts.join(", ")}</span><span>${esc(S.by[u.parts[0]]?.name_en || "")} <span class="note">· ${w.p} over ${w.second[0]}</span></span><span class="m">${(w.margin * 100).toFixed(1)} pts</span></button>`).join("")}
